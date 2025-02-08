@@ -1,5 +1,4 @@
 <?php 
-
 require "../App/Views/index.php";
 
 // require __DIR__."../../vendor/autoload.php";
