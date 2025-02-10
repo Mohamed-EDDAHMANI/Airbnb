@@ -1,10 +1,11 @@
 <?php
 namespace App\Controllers;
-
 use App\Core\Controller;
+use App\Models\UserModel;
 use App\Classes\User;
 
 class AuthController extends Controller {
+
     private $userModel;
 
     public function __construct(){
@@ -15,6 +16,7 @@ class AuthController extends Controller {
         // require  __DIR__ . '/../Views/auth/login.php';
         $this->view('auth/login', );
     }
+    
     public function postLoginPage(): void {
         $user = new User($_POST['email'], $_POST['password']);
     }

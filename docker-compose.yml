@@ -5,8 +5,8 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: simoProject
-      POSTGRES_DB: airbnb_db
+      POSTGRES_PASSWORD: airbnb
+      POSTGRES_DB: airbnb
     ports: 
       - "5432:5432"
 
@@ -16,7 +16,7 @@ services:
     restart: always
     environment:
       PGADMIN_DEFAULT_EMAIL: simoProject@gmail.com
-      PGADMIN_DEFAULT_PASSWORD: simoProject
+      PGADMIN_DEFAULT_PASSWORD: airbnb
     ports:
       - "8081:80"
 
