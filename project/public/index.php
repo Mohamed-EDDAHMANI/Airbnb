@@ -15,6 +15,4 @@ require "../App/Views/index.php";
 
 
 
-
-
 ?>
