@@ -2,6 +2,9 @@
 namespace App\Controllers;
 use App\Core\Controller;
 use App\Models\UserModel;
+use App\Core\Sessions;
+use App\Core\Redirect;
+use App\Core\ErrorsHandling;
 use App\Classes\User;
 
 class AuthController extends Controller {
@@ -13,11 +16,17 @@ class AuthController extends Controller {
     }
 
     public function getLoginPage(): void {
-        // require  __DIR__ . '/../Views/auth/login.php';
         $this->view('auth/login', );
     }
-    
+
     public function postLoginPage(): void {
         $user = new User($_POST['email'], $_POST['password']);
+        $result = $this->userModel->findUserByEmailPassword($user);
+        if ($result instanceof User) {
+            Sessions::createUserSession($result);
+            Redirect::redirectAfterLogin($result);
+        }else{
+            ErrorsHandling::handlLoginError();
+        }
     }
 }
