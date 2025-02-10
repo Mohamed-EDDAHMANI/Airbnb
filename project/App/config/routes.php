@@ -19,10 +19,10 @@ $router->get('/index/getAllAnnonce','HomeController@getAllAnnonce');
 $router->get('/index/getTopAnnonce','HomeController@getTopAnnonce');
 $router->post('/index/getTopCommentaire','HomeController@getTopCommentaire');
 
-$router->get('/admin', 'AdminController@admin');
-$router->get('/admin/users', 'AdminController@getAllUsers');
-$router->get('/admin/getAnnonces', 'AdminController@getAllAnnonces');
-$router->get('/admin/statistiques', 'AdminController@getStatistiques');
+$router->get('/admin', 'AdminController@Dashboard');
+$router->get('/admin/getAllUsers', 'AdminController@getAllUsers');
+$router->get('/admin/getAllAnnonces', 'AdminController@getAllAnnonces');
+$router->get('/admin/getStatistics', 'AdminController@getStatistics');
 $router->get('/admin/getPopulairePropritaire', 'AdminController@getPopulairePropritaire');
 $router->get('/admin/getRevenux', 'AdminController@getRevenux');
 $router->post('/admin/validationAnnonce', 'AdminController@validationAnnonce');

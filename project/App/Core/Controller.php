@@ -6,4 +6,8 @@ class Controller {
         extract($data);
         require __DIR__ . "/../views/$view.php";
     }
+    protected function redirect(string $url): void {
+        header("Location: $url");
+        exit;
+    }
 }

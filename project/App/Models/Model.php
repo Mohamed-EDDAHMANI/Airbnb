@@ -3,7 +3,7 @@ namespace App\Models;
 use App\core\Database;
 use PDO;
 
-class Model {
+class Model{
     
     protected $connection;
     protected $table_name;
