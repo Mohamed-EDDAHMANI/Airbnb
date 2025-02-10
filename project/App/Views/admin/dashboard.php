@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - Property Management</title>
-    <link rel="stylesheet" href="{{ FmyOwn('/assets/style/dashboard.css') }}">
+    <link rel="stylesheet" href="/assets/style/dashboard.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
@@ -167,6 +167,6 @@
         </div>
     </div>
 
-    <script src="{{ FmyOwn('/assets/js/dashboard.js') }}"></script>
+<script src="/assets/js/dashboard.js"></script>
 </body>
 </html>

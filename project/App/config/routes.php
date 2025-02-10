@@ -19,7 +19,7 @@ $router->get('/index/getAllAnnonce','HomeController@getAllAnnonce');
 $router->get('/index/getTopAnnonce','HomeController@getTopAnnonce');
 $router->post('/index/getTopCommentaire','HomeController@getTopCommentaire');
 
-$router->get('/admin', 'AdminController@adminDashboard');
+$router->get('/admin', 'AdminController@admin');
 $router->get('/admin/users', 'AdminController@getAllUsers');
 $router->get('/admin/getAnnonces', 'AdminController@getAllAnnonces');
 $router->get('/admin/statistiques', 'AdminController@getStatistiques');
