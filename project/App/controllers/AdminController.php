@@ -11,7 +11,7 @@ class AdminController extends Controller {
     }
 
     public function admin(): void {
-        $this->view('admin/dashboard/', );
+        $this->view('admin/dashboard');
     }
     public function getAllUsers(): void {
         var_dump("create");

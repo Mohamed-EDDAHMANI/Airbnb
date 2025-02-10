@@ -5,6 +5,7 @@ use App\Models\UserModel;
 use App\Core\Sessions;
 use App\Core\Redirect;
 use App\Core\ErrorsHandling;
+use App\Core\Validation;
 use App\Classes\User;
 
 class AuthController extends Controller {
@@ -16,7 +17,7 @@ class AuthController extends Controller {
     }
 
     public function getLoginPage(): void {
-        $this->view('auth/login', );
+        $this->view('auth/login' );
     }
 
     public function postLoginPage(): void {
@@ -24,9 +25,18 @@ class AuthController extends Controller {
         $result = $this->userModel->findUserByEmailPassword($user);
         if ($result instanceof User) {
             Sessions::createUserSession($result);
+            $this->userModel->connectUser($result);
             Redirect::redirectAfterLogin($result);
         }else{
             ErrorsHandling::handlLoginError();
+        }
+    }
+
+    public function getSingUpPage(): void {
+        $user = new User($_POST['email'],$_POST['password'],$_POST['userName'],$_POST['role']);
+        $result = Validation::valideSingUp($user);
+        if ($result) {
+            $this->getLoginPage();
         }
     }
 }

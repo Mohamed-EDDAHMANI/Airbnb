@@ -6,4 +6,5 @@ class Controller {
         extract($data);
         require __DIR__ . "/../views/$view.php";
     }
+
 }
