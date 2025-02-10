@@ -3,7 +3,7 @@
         'name' => 'hp/airbnb',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '63a168815ae9fd0e7f61178f9cf855d5fe545533',
+        'reference' => '7dbac5f544286afdc909fbb58a5c3f02efd51f9e',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'hp/airbnb' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '63a168815ae9fd0e7f61178f9cf855d5fe545533',
+            'reference' => '7dbac5f544286afdc909fbb58a5c3f02efd51f9e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
