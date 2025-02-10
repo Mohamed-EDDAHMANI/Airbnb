@@ -1,6 +1,6 @@
 FROM php:8.4-apache
 
-# Installer les dépendances nécessaires pour PostgreSQL
+# Installer les dépendances nécessaires pour PostgreSQL /C , C++
 RUN apt-get update && apt-get install -y libpq-dev
 
 # Install PgSQL PDO extension

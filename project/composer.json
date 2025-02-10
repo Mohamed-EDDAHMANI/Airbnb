@@ -2,7 +2,7 @@
     "name": "hp/airbnb",
     "autoload": {
         "psr-4": {
-            "App\\": "project/"
+            "App\\": "App/"
         }
     },
     "authors": [

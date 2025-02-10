@@ -34,10 +34,6 @@ class ComposerStaticInit1cbde8a0d1f280e6ef05881681d6cc4f
         array (
             'PhpOption\\' => 10,
         ),
-        'H' => 
-        array (
-            'Hp\\Airbnb\\' => 10,
-        ),
         'G' => 
         array (
             'GrahamCampbell\\ResultType\\' => 26,
@@ -45,6 +41,10 @@ class ComposerStaticInit1cbde8a0d1f280e6ef05881681d6cc4f
         'D' => 
         array (
             'Dotenv\\' => 7,
+        ),
+        'A' => 
+        array (
+            'App\\' => 4,
         ),
     );
 
@@ -73,10 +73,6 @@ class ComposerStaticInit1cbde8a0d1f280e6ef05881681d6cc4f
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
-        'Hp\\Airbnb\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
-        ),
         'GrahamCampbell\\ResultType\\' => 
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
@@ -84,6 +80,10 @@ class ComposerStaticInit1cbde8a0d1f280e6ef05881681d6cc4f
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/App',
         ),
     );
 
