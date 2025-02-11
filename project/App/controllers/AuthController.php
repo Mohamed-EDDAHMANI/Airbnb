@@ -78,9 +78,9 @@ class AuthController extends Controller
 
     public function postLoginWithGoogle(): void
     {
-        $clientID = '758886429836-og8aqhi9h35kdtldrchr2i9uhqm5atdq.apps.googleusercontent.com';
-        $clientSecret = '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';
-        $redirectUri = 'http://localhost/login/google';
+        $clientID = $_ENV['CLIENTID'];
+        $clientSecret = $_ENV['CLIENTSECRET'];
+        $redirectUri = $_ENV['REDIRECTURL'];
 
         // Create Google Client
         $client = new Client;
