@@ -1,14 +1,16 @@
 <?php
 
-$router->get('/home','HomeController@gethomePage');
+$router->get('/','HomeController@gethomePage');
 // ---- on the get home page (Page with Auth)
 // $router->get('/home/listAnnonce','HomeController@getAllAnnonce');
 $router->get('/detailsAnnonce','HomeController@detailsAnnonce');
-$router->get('/reservationPage','HomeController@getReservationPage');
-$router->get('/reservationPage/reserve','HomeController@reserve');
+$router->get('/reservation','HomeController@getReservationPage');
+$router->get('/reservation/reserver','HomeController@reserver');
 $router->get('/myReservations','HomeController@myReservations');
 $router->get('/myReservations/delete/{id}','HomeController@reservationsDelete');
-$router->get('/payementPage','HomeController@getpayementPage');
+$router->get('/checkout','HomeController@getpayementPage');
+$router->get('/success','HomeController@getSuccessPage');
+$router->get('/cancel','HomeController@getCancelPage');
 $router->get('/payementPage/payer','HomeController@effectuerPayement');
 
 //sans auth
