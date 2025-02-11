@@ -33,11 +33,11 @@ class AdminController extends Controller {
     }    
     public function getAllUsers(): void {
         $users = $this->userModel->getAllUsers();
-        $this->view('admin/users', [
+        $this->view('admin/proprelated/users', [
             'title' => 'All Users',
             'users' => $users
         ]);
-    }
+    }    
     public function getAllAnnonces(): void {
         $annonces = $this->annonceModel->getAllAnnonces();
         $this->view('admin/annonces', [

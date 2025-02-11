@@ -20,11 +20,11 @@ $router->get('/index/getTopAnnonce','HomeController@getTopAnnonce');
 $router->post('/index/getTopCommentaire','HomeController@getTopCommentaire');
 
 $router->get('/admin', 'AdminController@Dashboard');
-$router->get('/admin/getAllUsers', 'AdminController@getAllUsers');
-$router->get('/admin/getAllAnnonces', 'AdminController@getAllAnnonces');
-$router->get('/admin/getStatistics', 'AdminController@getStatistics');
-$router->get('/admin/getPopulairePropritaire', 'AdminController@getPopulairePropritaire');
-$router->get('/admin/getRevenux', 'AdminController@getRevenux');
+$router->get('/admin/proprelated/users', 'AdminController@getAllUsers');
+$router->get('/admin/properrelated/annonces', 'AdminController@getAllAnnonces');
+$router->get('/admin/properrelated/statistics', 'AdminController@getStatistics');
+$router->get('/admin/properrelated/populaire_propritaire', 'AdminController@getPopulairePropritaire');
+$router->get('/admin/properrelated/revenus', 'AdminController@getRevenux');
 $router->post('/admin/validationAnnonce', 'AdminController@validationAnnonce');
 $router->post('/admin/validationUser', 'AdminController@validationUser');
 $router->post('/admin/delete/{id}', 'AdminController@deleteAnnonce');
