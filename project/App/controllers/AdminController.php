@@ -29,7 +29,7 @@ class AdminController extends Controller {
         $this->conn = new Database();
     }
     public function Dashboard(){
-        require_once __DIR__ . "/../Views/admin/dashboard.php";
+        $this->view('admin/dashboard', );
     }    
     public function getAllUsers(): void {
         $users = $this->userModel->getAllUsers();
@@ -70,7 +70,7 @@ class AdminController extends Controller {
         if (isset($_POST['id'])) {
             $id = $_POST['id'];
             $this->annonceModel->validateAnnonce($id);
-            $this->redirect('/admin/getAllAnnonces');
+            $this->view('/admin/annonces');
         }
     }
     public function validationUser(): void {
@@ -85,9 +85,9 @@ class AdminController extends Controller {
     public function deleteAnnonce(int $id): void {
         $result = $this->annonceModel->deleteAnnonceById($id);
         if ($result) {
-            header('Location: /admin/getAllAnnonces?success=succès');
+            header('Location: /admin/annonces?success=succès');
         } else {
-            header('Location: /admin/getAllAnnonces?error=Échec');
+            header('Location: /admin/annonces?error=Échec');
         }
         exit;
     }    
@@ -96,9 +96,9 @@ class AdminController extends Controller {
             $commentaireId = $_POST['commentaire_id'];
             $result = $this->annonceModel->deleteCommentaireById($commentaireId);
             if ($result) {
-                header('Location: /admin/getStatistiques?success=succès');
+                header('Location: /admin/statistiques?success=succès');
             } else {
-                header('Location: /admin/getStatistiques?error=Échec');
+                header('Location: /admin/statistiques?error=Échec');
             }
         }exit;
     }
@@ -107,9 +107,9 @@ class AdminController extends Controller {
             $litigeId = $_POST['litige_id'];
             $result = $this->DeclarationModel->resoudreLitige($litigeId);
             if ($result) {
-                header('Location: /admin/getStatistiques?success=succès');
+                header('Location: /admin/statistiques?success=succès');
             } else {
-                header('Location: /admin/getStatistiques?error=Échec');
+                header('Location: /admin/statistiques?error=Échec');
             }
         } exit;
     }
