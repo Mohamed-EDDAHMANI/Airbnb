@@ -39,9 +39,10 @@ $router->post('/createAnnonce', 'proprietaireController@createAnnonce');
 $router->post('/deleteAnnonce/{id}', 'proprietaireController@deleteAnnonce');
 $router->post('/UpdateAnnonce/{id}', 'proprietaireController@UpdateAnnonce');
 
-$router->get('login', 'AuthController@getLoginPage');
-$router->post('login', 'AuthController@postLoginPage');
+$router->get('/login', 'AuthController@getLoginPage');
+$router->post('/login', 'AuthController@postLoginPage');
+$router->get('/login/google', 'AuthController@postLoginWithGoogle');
 
-$router->get('singUp', 'AuthController@getSingUpPage');
-$router->post('singUp', 'AuthController@postSingUpPage');
+$router->get('/singUp', 'AuthController@getSingUpPage');
+$router->post('/singUp', 'AuthController@postSingUpPage');
 

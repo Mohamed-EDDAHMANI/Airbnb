@@ -9,13 +9,15 @@ class User{
     private $userName;
     private $role;
     private $id;
+    private $pic;
 
-    public function __construct($email, $password, $userName = '', $role = '', $id = '') {
+    public function __construct($email, $password, $userName = '', $role = '', $id = '', $pic = '') {
         $this->email = $email;
         $this->password = $password;
         $this->userName = $userName;
         $this->role = $role;
         $this->id = $id;
+        $this->pic = $pic;
     }
 
     // Getters

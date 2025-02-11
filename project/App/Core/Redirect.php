@@ -14,7 +14,7 @@ class Redirect extends Controller{
                 break;
             case 'proprietaire':
                 $controller = new Controller();
-                $controller->view('admin/dashboard');
+                $controller->view('proprietaire/dashboard');
                 break;
             case 'voyageur':
                 $controller = new Controller();

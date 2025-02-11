@@ -3,8 +3,9 @@ namespace App\Core;
 
 class Controller {
     protected function view($view, $data = []) {
-        extract($data);
-        require __DIR__ . "/../views/$view.php";
+        // extract($data);
+        include dirname(__DIR__)."/Views/$view.php";
+
     }
 
 }

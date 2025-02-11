@@ -8,35 +8,120 @@ use App\Core\ErrorsHandling;
 use App\Core\Validation;
 use App\Classes\User;
 
-class AuthController extends Controller {
+use Google\Client;
+use Google\Service\Oauth2 as Google_Service_Oauth2;
+
+
+class AuthController extends Controller
+{
 
     private $userModel;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->userModel = new userModel();
     }
 
-    public function getLoginPage(): void {
-        $this->view('auth/login' );
+    public function getLoginPage(): void
+    {
+        // Google OAuth credentials
+        $clientID = '758886429836-og8aqhi9h35kdtldrchr2i9uhqm5atdq.apps.googleusercontent.com';
+        $clientSecret = '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';
+        $redirectUri = 'http://localhost/login/google';
+
+        // Create Google Client
+        $client = new Client;
+        $client->setClientId($clientID);
+        $client->setClientSecret($clientSecret);
+        $client->setRedirectUri($redirectUri);
+        $client->addScope("email");
+        $client->addScope("profile");
+
+        $authUrl = $client->createAuthUrl();
+
+        $this->view('auth/login', $authUrl);
     }
 
-    public function postLoginPage(): void {
-        $user = new User($_POST['email'], $_POST['password']);
+    public function getSingUpPage()
+    {
+        $this->view('auth/singUp');
+    }
+
+
+
+    public function postLoginPage($user = '')
+    {
+        if (!$user) {
+            $user = new User($_POST['email'], $_POST['password']);
+        }
         $result = $this->userModel->findUserByEmailPassword($user);
         if ($result instanceof User) {
             Sessions::createUserSession($result);
             $this->userModel->connectUser($result);
             Redirect::redirectAfterLogin($result);
-        }else{
+        } else {
             ErrorsHandling::handlLoginError();
+            return false;
         }
     }
 
-    public function getSingUpPage(): void {
-        $user = new User($_POST['email'],$_POST['password'],$_POST['userName'],$_POST['role']);
+    public function postSingUpPage($user = ''): void
+    {
+        if (!$user) {
+            $user = new User($_POST['email'], $_POST['password'], $_POST['userName'], $_POST['role']);
+        }
         $result = Validation::valideSingUp($user);
         if ($result) {
             $this->getLoginPage();
+        }
+    }
+
+    public function postLoginWithGoogle(): void
+    {
+        $clientID = '758886429836-og8aqhi9h35kdtldrchr2i9uhqm5atdq.apps.googleusercontent.com';
+        $clientSecret = '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';
+        $redirectUri = 'http://localhost/login/google';
+
+        // Create Google Client
+        $client = new Client;
+        $client->setClientId($clientID);
+        $client->setClientSecret($clientSecret);
+        $client->setRedirectUri($redirectUri);
+        $client->addScope("email");
+        $client->addScope("profile");
+
+        if (!isset($_GET["code"])) {
+            die("Error: No authorization code received.");
+        }
+
+        $token = $client->fetchAccessTokenWithAuthCode($_GET["code"]);
+
+        if (isset($token['error'])) {
+            die("Google OAuth Error: " . $token['error']);
+        }
+
+        if (!isset($token['access_token'])) {
+            die("Error: Access token not received.");
+        }
+
+        $client->setAccessToken($token['access_token']);
+
+        $google_oauth = new Google_Service_Oauth2($client);
+
+        $google_account_info = $google_oauth->userinfo->get();
+        $fullName = $google_account_info->name;
+        $email = $google_account_info->email;
+        $password = $google_account_info->id;
+        $pic = $google_account_info->picture;
+        $user = new User($email, $password, $fullName, '', '', $pic);
+        $ifHasAccount = $this->postLoginPage($user);
+        if (!$ifHasAccount) {
+            $user = [
+                'fullName' => $fullName,
+                'email' => $email,
+                'pic' => $pic
+            ];
+            $this->view('auth/form',$user);
         }
     }
 }

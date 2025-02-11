@@ -25,7 +25,7 @@ class UserModel extends Model
         $stmt->execute();
         if ($stmt->execute()) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            return new User($user['email'], $user['password'], $user['userName'], $user['role'], $user['id']);
+            return new User($user['email'], $user['password'], $user['name'], $user['role'], $user['id']);
         } else {
             return false;
         }
@@ -37,12 +37,12 @@ class UserModel extends Model
         $password = $user->getPassword();
         $userName = $user->getUserName();
         $role = $user->getRole();
-        $query = "INSERT INTO {$this::$table} (email, password, userName, role) 
+        $query = "INSERT INTO {$this::$table} (email, password, name, role) 
               VALUES (:email, :password, :userName, :role)";
         $stmt = $this->connection->prepare($query);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
         $stmt->bindParam(':password', $password, PDO::PARAM_STR);
-        $stmt->bindParam(':userName', $userName, PDO::PARAM_STR);
+        $stmt->bindParam(':name', $userName, PDO::PARAM_STR);
         $stmt->bindParam(':role', $role, PDO::PARAM_STR);
         $stmt->execute();
         if ($stmt->execute()) {
@@ -61,7 +61,7 @@ class UserModel extends Model
             return;
         }
 
-        $query = "UPDATE {$this::$table} SET isConnected = 1 WHERE id = :id";
+        $query = "UPDATE {$this::$table} SET is_connected = true WHERE id = :id";
         $stmt = $this->connection->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_STR);
         $stmt->execute();
@@ -74,7 +74,7 @@ class UserModel extends Model
 
     public function isConnect($id)
     {
-        $query = "SELECT isConnected FROM {$this::$table} 
+        $query = "SELECT is_connected FROM {$this::$table} 
               WHERE id = :id";
         $stmt = $this->connection->prepare($query);
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);

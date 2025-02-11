@@ -16,6 +16,21 @@ class Router
         $this->routes['POST'][$route] = $controller;
     }
 
+    public function put($route, $controller): void
+    {
+        $this->routes['PUT'][$route] = $controller;
+    }
+
+    public function delete($route, $controller): void
+    {
+        $this->routes['DELETE'][$route] = $controller;
+    }
+
+    public function patch($route, $controller): void
+    {
+        $this->routes['PATCH'][$route] = $controller;
+    }
+
   
 
     public function dispatch($url, $method)
@@ -43,10 +58,9 @@ class Router
             // echo '<br>';
             // var_dump($path);
             // echo '<br>';
-            // var_dump($countrollerName);
-            // echo '<br>';
             // var_dump($methodName);
-            // exit;
+            // echo '<br>';
+           
 
             if (class_exists($controllerPath) && method_exists($controllerPath ,$methodName)) {
                 
