@@ -30,47 +30,30 @@ class AdminController extends Controller {
     }
     public function Dashboard(){
         $this->view('admin/dashboard', );
-    }    
-    public function getAllUsers(): void {
-        $users = $this->userModel->getAllUsers();
-        $this->view('admin/proprelated/users', [
-            'title' => 'All Users',
-            'users' => $users
-        ]);
-    }    
-    public function getAllAnnonces(): void {
+    }
+    public function getAllUsers() {
+        $userModel = new UserModel();
+        $users = $userModel->getAllUsers();
+        $this->view('admin/proprelated/users', ['users' => $users]);
+    }
+    public function getAllAnnonces() {
         $annonces = $this->annonceModel->getAllAnnonces();
-        $this->view('admin/annonces', [
-            'title' => 'All Annonces',
-            'annonces' => $annonces
-        ]);
+        $this->view('admin/proprelated/annonces', ['annonces' => $annonces]);
     }
-    public function getStatistics(): void {
-        $statistics = $this->statisticsModel->getStatistics();
-        $this->view('admin/statistiques', [
-            'title' => 'Statistics',
-            'statistics' => $statistics
-        ]);
+    public function getStatistics() {
+        $this->view('admin/proprelated/statistics');
     }
-    public function getPopulairePropritaire(): void {
-        $popularOwners = $this->populairePropritaireModel->getPopularOwners();
-            $this->view('admin/populaire_propritaire', [
-            'title' => 'Popular Owners',
-            'owners' => $popularOwners
-        ]);
+    public function getPopulairePropritaire() {
+        $this->view('admin/proprelated/populaire_propritaire');
     }
-    public function getRevenux(): void {
-        $revenus = $this->revenuxModel->getRevenues();
-        $this->view('admin/revenus', [
-            'title' => 'Revenues',
-            'revenus' => $revenus
-        ]);
+    public function getRevenux() {
+        $this->view('admin/proprelated/revenus');
     }
     public function validationAnnonce(): void {
         if (isset($_POST['id'])) {
             $id = $_POST['id'];
             $this->annonceModel->validateAnnonce($id);
-            $this->view('/admin/annonces');
+            $this->view('/admin/proprelated/annonces');
         }
     }
     public function validationUser(): void {

@@ -35,3 +35,22 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const sidebarLinks = document.querySelectorAll(".sidebar-menu a");
+    sidebarLinks.forEach(link => {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
+            const url = this.getAttribute("href");
+            const contentarea = document.getElementById("content-area");
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    contentarea.innerHTML = data;
+                    sidebarLinks.forEach(link => link.classList.remove("active"));
+                    this.classList.add("active");
+                })
+                .catch(error => console.error("Error loading section:", error));
+        });
+    });
+});

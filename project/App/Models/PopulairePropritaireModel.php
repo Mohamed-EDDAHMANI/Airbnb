@@ -8,4 +8,12 @@ class PopulairePropritaireModel extends Model {
         $statement->execute();
         return $statement->fetchAll();
     }
+    public function getAllOwners(){
+        $myQuery="SELECT id, `name`, email, `password`, is_active, is_connected, created_at 
+                    from users 
+                    where `role` = 'proprietaire'";
+        $stmt=$this->connection->prepare($myQuery);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 }
