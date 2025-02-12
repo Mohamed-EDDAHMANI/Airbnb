@@ -38,4 +38,11 @@ class HomeController extends Controller {
         $this->view('user/cancel');
     }
 
+    public function getAllAnnoncePage() {
+        $this->view('user/listAnnonce');
+    }
+    public function getConversationPage() {
+        $this->view('user/conversation');
+    }
+
 }

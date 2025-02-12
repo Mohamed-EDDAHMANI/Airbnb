@@ -11,6 +11,8 @@ $router->get('/myReservations/delete/{id}','HomeController@reservationsDelete');
 $router->get('/checkout','HomeController@getpayementPage');
 $router->get('/success','HomeController@getSuccessPage');
 $router->get('/cancel','HomeController@getCancelPage');
+$router->get('/pageAnnonces','HomeController@getAllAnnoncePage');
+$router->get('/conversation','HomeController@getConversationPage');
 $router->get('/payementPage/payer','HomeController@effectuerPayement');
 
 //sans auth
