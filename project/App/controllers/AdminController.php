@@ -29,12 +29,63 @@ class AdminController extends Controller {
         $this->conn = new Database();
     }
     public function Dashboard(){
-        $this->view('admin/dashboard', );
+        $this->view('admin/dashboard');
     }
     public function getAllUsers() {
         $userModel = new UserModel();
         $users = $userModel->getAllUsers();
-        $this->view('admin/proprelated/users', ['users' => $users]);
+        $deletedUsers = $userModel->getDeletedUsers();
+        $this->view('admin/proprelated/users', ['users' => $users, 
+                                                'deletedUsers' => $deletedUsers,
+                                               ]);
+    }   
+        public function toggleUserStatus(): void {
+        if (isset($_POST['id'])) {
+            $id = intval($_POST['id']);
+            $this->userModel->toggleUserStatus($id);
+            header('Location: /admin/');
+        } else {
+            echo "Invalid user ID.";
+        }
+        exit;
+    }
+    public function deleteUser(): void {
+        if (isset($_POST['id'])) {
+            $id = intval($_POST['id']);
+            $result = $this->userModel->deleteUser($id);
+            if ($result) {
+                header('Location: /admin');
+            } else {
+                header('Location: /admin');
+            }
+        } else {
+            header('Location: /admin/users?error=Invalid user ID');
+        }
+        exit;
+    }
+    public function permanentDeleteUser(): void {
+        if (isset($_POST['id'])) {
+            $id = intval($_POST['id']);
+            $result = $this->userModel->permanentDeleteUser($id);
+            if ($result) {
+                header('Location: /admin');
+            } else {
+                header('Location: /admin');
+            }
+        } else {
+            header('Location: /admin/users?error=Invalid user ID');
+        }
+        exit;
+    }
+     public function restoreUser(): void {
+        if (isset($_POST['id'])) {
+            $id = intval($_POST['id']);
+            $this->userModel->restoreUser($id);
+            header('Location: /admin');
+        } else {
+            echo "Invalid user ID.";
+        }
+        exit;
     }
     public function getAllAnnonces() {
         $annonces = $this->annonceModel->getAllAnnonces();
@@ -44,25 +95,18 @@ class AdminController extends Controller {
         $this->view('admin/proprelated/statistics');
     }
     public function getPopulairePropritaire() {
-        $this->view('admin/proprelated/populaire_propritaire');
+        $Owners=$this->populairePropritaireModel->getAllOwners();
+        $this->view('admin/proprelated/populaire_propritaire' , ['Owners' => $Owners]);
     }
     public function getRevenux() {
-        $this->view('admin/proprelated/revenus');
+        $Revenux=$this->revenuxModel->getRevenux();
+        $this->view('admin/proprelated/revenus' , ['Revenux' => $Revenux]);
     }
     public function validationAnnonce(): void {
         if (isset($_POST['id'])) {
             $id = $_POST['id'];
             $this->annonceModel->validateAnnonce($id);
             $this->view('/admin/proprelated/annonces');
-        }
-    }
-    public function validationUser(): void {
-        if (isset($_POST['id'])) {
-            $id = intval($_POST['id']);
-            $this->userModel->validateUser($id);
-            echo "User validation status updated successfully.";
-        } else {
-            echo "Invalid user ID.";
         }
     }
     public function deleteAnnonce(int $id): void {

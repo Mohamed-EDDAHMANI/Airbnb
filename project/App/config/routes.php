@@ -21,14 +21,17 @@ $router->post('/index/getTopCommentaire','HomeController@getTopCommentaire');
 
 $router->get('/admin', 'AdminController@Dashboard');
 $router->get('/admin/proprelated/users', 'AdminController@getAllUsers');
+$router->post('/admin/toggleUserStatus', 'AdminController@toggleUserStatus');
+$router->post('/admin/deleteUser', 'AdminController@DeleteUser');
+$router->post('/admin/restoreUser', 'AdminController@restoreUser');
+$router->post('/admin/permanentDeleteUser', 'AdminController@permanentDeleteUser');
 $router->get('/admin/proprelated/annonces', 'AdminController@getAllAnnonces');
+$router->post('/admin/delete/{id}', 'AdminController@deleteAnnonce');
+$router->post('/admin/validationAnnonce/{id}', 'AdminController@validationAnnonce');
 $router->get('/admin/proprelated/populaire_propritaire', 'AdminController@getPopulairePropritaire');
 $router->get('/admin/proprelated/revenus', 'AdminController@getRevenux');
 $router->get('/admin/proprelated/statistics', 'AdminController@getStatistics');
-$router->post('/admin/validationAnnonce', 'AdminController@validationAnnonce');
-$router->post('/admin/validationUser', 'AdminController@validationUser');
-$router->post('/admin/delete/{id}', 'AdminController@deleteAnnonce');
-$router->post('/admin/deleteCommentaires', 'AdminController@deleteCommentaires');
+$router->post('/admin/deleteCommentaires/{id}', 'AdminController@deleteCommentaires');
 $router->post('/admin/gestionLitige', 'AdminController@gestionLitige');
 
 $router->get('/proprietaire','proprietaireController@proprietaireDashboard');

@@ -28,7 +28,6 @@
                 <li><a href="/admin/proprelated/populaire_propritaire"><i class="fas fa-calendar"></i> Proprietaire</a></li>
                 <li><a href="/admin/proprelated/revenus"><i class="fas fa-star"></i> Revenus</a></li>
                 <li><a href="/admin/proprelated/reports"><i class="fas fa-chart-bar"></i> Reports</a></li>
-                <li><a href="/admin/proprelated/setting"><i class="fas fa-cog"></i> Settings</a></li>
             </ul>
 
         </div>
