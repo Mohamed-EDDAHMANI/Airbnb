@@ -5,16 +5,18 @@ class User{
 
     private $email;
     private $password;
-    private $userName;
+    private $name;
     private $role;
     private $id;
+    private $pic;
 
-    public function __construct($email, $password, $userName = '', $role = '', $id = '') {
+    public function __construct($email, $password, $name = '', $role = '', $id = '', $pic = '') {
         $this->email = $email;
         $this->password = $password;
-        $this->userName = $userName;
+        $this->name = $name;
         $this->role = $role;
         $this->id = $id;
+        $this->pic = $pic;
     }
 
     // Getters
@@ -26,8 +28,8 @@ class User{
         return $this->password;
     }
 
-    public function getUserName() {
-        return $this->userName;
+    public function getName() {
+        return $this->name;
     }
 
     public function getRole() {
@@ -36,5 +38,8 @@ class User{
 
     public function getId() {
         return $this->id;
+    }
+    public function getPic() {
+        return $this->pic;
     }
 }

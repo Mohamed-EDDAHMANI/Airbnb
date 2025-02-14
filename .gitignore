@@ -1,2 +1,3 @@
-/project/vendor/
-/project/.env/
+project/vendor/
+.env
+project/composer.lock

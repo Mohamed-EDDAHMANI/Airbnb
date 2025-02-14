@@ -1,4 +1,13 @@
 RewriteEngine On
+
+# Exclude requests for the "uploads" directory and its contents
+RewriteCond %{REQUEST_URI} !^/uploads(/|$)
+
+# Check if the requested filename is not a valid file
 RewriteCond %{REQUEST_FILENAME} !-f
+
+# Check if the requested filename is not a valid directory
 RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite all other requests to index.php
 RewriteRule ^(.*)$ index.php/$1 [L]
