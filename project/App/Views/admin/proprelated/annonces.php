@@ -139,6 +139,15 @@
                                     </button>
                                 </form>
 
+                                <!-- Delete button -->
+                                <form method="POST" action="/admin/deleteAnnonce" class="inline-block">
+                                    <input type="hidden" name="id" value="<?= htmlspecialchars($annonce['id'] ?? '') ?>">
+                                    <button type="submit" class="tooltip text-red-500 hover:text-red-700 transition-all duration-200 hover:scale-110 transform p-1 rounded-full hover:bg-red-50">
+                                        <i class="fas fa-trash"></i>
+                                        <span class="tooltip-text">Delete</span>
+                                    </button>
+                                </form>
+                                
                                 <!-- Validation button with updated icon -->
                                 <form method="POST" action="/admin/validationAnnonce" class="inline-block">
                                     <input type="hidden" name="id" value="<?= htmlspecialchars($annonce['id'] ?? '') ?>">
@@ -148,14 +157,6 @@
                                     </button>
                                 </form>
 
-                                <!-- Delete button -->
-                                <form method="POST" action="/admin/deleteAnnonce" class="inline-block">
-                                    <input type="hidden" name="id" value="<?= htmlspecialchars($annonce['id'] ?? '') ?>">
-                                    <button type="submit" class="tooltip text-red-500 hover:text-red-700 transition-all duration-200 hover:scale-110 transform p-1 rounded-full hover:bg-red-50">
-                                        <i class="fas fa-trash"></i>
-                                        <span class="tooltip-text">Delete</span>
-                                    </button>
-                                </form>
                             </div>
                         </td>
                     </tr>

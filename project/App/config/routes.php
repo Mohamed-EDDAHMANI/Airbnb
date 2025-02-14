@@ -26,11 +26,12 @@ $router->post('/admin/deleteUser', 'AdminController@DeleteUser');
 $router->post('/admin/restoreUser', 'AdminController@restoreUser');
 $router->post('/admin/permanentDeleteUser', 'AdminController@permanentDeleteUser');
 $router->get('/admin/proprelated/annonces', 'AdminController@getAllAnnonces');
-$router->post('/admin/delete/{id}', 'AdminController@deleteAnnonce');
-$router->post('/admin/validationAnnonce/{id}', 'AdminController@validationAnnonce');
+$router->post('/admin/toggleAnnoncesStatus', 'AdminController@toggleUserStatus');
+$router->post('/admin/deleteAnnonces', 'AdminController@deleteAnnonce');
+$router->post('/admin/restoreAnnonces', 'AdminController@restoreUser');
+$router->post('/admin/permanentDeleteAnnonces', 'AdminController@permanentDeleteUser');
 $router->get('/admin/proprelated/populaire_propritaire', 'AdminController@getPopulairePropritaire');
 $router->get('/admin/proprelated/revenus', 'AdminController@getRevenux');
-$router->get('/admin/proprelated/statistics', 'AdminController@getStatistics');
 $router->post('/admin/deleteCommentaires/{id}', 'AdminController@deleteCommentaires');
 $router->post('/admin/gestionLitige', 'AdminController@gestionLitige');
 

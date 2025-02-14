@@ -13,7 +13,6 @@ class AdminController extends Controller {
     
     private $populairePropritaireModel;
     private $DeclarationModel;
-    private $statisticsModel;
     private $revenuxModel;
     private $annonceModel;
     private $userModel;
@@ -21,7 +20,6 @@ class AdminController extends Controller {
 
     public function __construct(){
         $this->populairePropritaireModel = new PopulairePropritaireModel($this->conn);
-        $this->statisticsModel = new StatisticsModel($this->conn);
         $this->revenuxModel = new RevenuxModel($this->conn);
         $this->annonceModel = new AnnonceModel($this->conn);
         $this->DeclarationModel = new DeclarationModel();
@@ -29,7 +27,17 @@ class AdminController extends Controller {
         $this->conn = new Database();
     }
     public function Dashboard(){
-        $this->view('admin/dashboard');
+        $statisticsModel = new StatisticsModel($this->conn);
+        $totalProperties = $statisticsModel->getTotalProperties();
+        $totalReservations = $statisticsModel->getTotalReservations();
+        $totalUsers = $statisticsModel->getTotalUsers();
+        $totalRevenue = $statisticsModel->getTotalRevenue();
+        $this->view('admin/dashboard', [
+            'totalProperties' => $totalProperties,
+            'totalReservations' => $totalReservations,
+            'totalUsers' => $totalUsers,
+            'totalRevenue' => $totalRevenue,
+        ]);
     }
     public function getAllUsers() {
         $userModel = new UserModel();
@@ -39,7 +47,7 @@ class AdminController extends Controller {
                                                 'deletedUsers' => $deletedUsers,
                                                ]);
     }   
-        public function toggleUserStatus(): void {
+    public function toggleUserStatus(): void {
         if (isset($_POST['id'])) {
             $id = intval($_POST['id']);
             $this->userModel->toggleUserStatus($id);
@@ -91,8 +99,39 @@ class AdminController extends Controller {
         $annonces = $this->annonceModel->getAllAnnonces();
         $this->view('admin/proprelated/annonces', ['annonces' => $annonces]);
     }
-    public function getStatistics() {
-        $this->view('admin/proprelated/statistics');
+    public function validationAnnonce(): void {
+        if (isset($_POST['id'])) {
+            $id = intval($_POST['id']);
+            $this->annonceModel->validateAnnonce($id);
+            header('Location: /admin/proprelated/annonces');
+        } else {
+            header('Location: /admin/proprelated/annonces?error=Invalid annonce ID');
+        }
+        exit;
+    }
+    public function deleteAnnonce(): void {
+       if (isset($_POST['id'])) {
+            $id = intval($_POST['id']);
+            $result = $this->annonceModel->deleteAnnonceById($id);
+            if ($result) {
+                header('Location: /admin/proprelated/annonces?success=Annonce deleted successfully');
+            } else {
+                header('Location: /admin/proprelated/annonces?error=Failed to delete annonce');
+            }
+        } else {
+            header('Location: /admin/proprelated/annonces?error=Invalid annonce ID');
+        }
+        exit;
+    }
+     public function toggleAnnoncesStatus(): void {
+        if (isset($_POST['id'])) {
+            $id = intval($_POST['id']);
+            $this->annonceModel->toggleAnnonceStatus($id);
+            header('Location: /admin/proprelated/annonces');
+        } else {
+            echo "Invalid annonce ID.";
+        }
+        exit;
     }
     public function getPopulairePropritaire() {
         $Owners=$this->populairePropritaireModel->getAllOwners();
@@ -101,23 +140,7 @@ class AdminController extends Controller {
     public function getRevenux() {
         $Revenux=$this->revenuxModel->getRevenux();
         $this->view('admin/proprelated/revenus' , ['Revenux' => $Revenux]);
-    }
-    public function validationAnnonce(): void {
-        if (isset($_POST['id'])) {
-            $id = $_POST['id'];
-            $this->annonceModel->validateAnnonce($id);
-            $this->view('/admin/proprelated/annonces');
-        }
-    }
-    public function deleteAnnonce(int $id): void {
-        $result = $this->annonceModel->deleteAnnonceById($id);
-        if ($result) {
-            header('Location: /admin/annonces?success=succès');
-        } else {
-            header('Location: /admin/annonces?error=Échec');
-        }
-        exit;
-    }    
+    }   
     public function deleteCommentaires(): void {
         if (isset($_POST['commentaire_id'])) {
             $commentaireId = $_POST['commentaire_id'];

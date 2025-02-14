@@ -314,7 +314,6 @@ body {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255, 56, 92, 0.2);
 }
-
 .house-decoration {
     position: absolute;
     top: -30px;
@@ -326,7 +325,6 @@ body {
     transform: rotate(45deg);
     box-shadow: 0 4px 12px rgba(255, 56, 92, 0.2);
 }
-
 .modal-close {
     position: absolute;
     top: 1rem;
@@ -339,7 +337,6 @@ body {
     opacity: 0.5;
     transition: opacity 0.3s ease;
 }
-
 .modal-close:hover {
     opacity: 1;
 }
