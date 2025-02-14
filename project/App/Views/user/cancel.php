@@ -93,9 +93,11 @@
             </div>
         </div>
     </main>
+<br>
+<br>
 
-
-    <footer class="bg-white border-t mt-12">
+    <!-- Footer -->
+    <footer class="bg-white border-t">
         <div class="max-w-7xl mx-auto px-4 py-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
@@ -140,7 +142,7 @@
                         <span>Français (FR)</span>
                     </div>
                     <div>
-                        <span>DH MAD</span>
+                        <span>EUR</span>
                     </div>
                 </div>
             </div>

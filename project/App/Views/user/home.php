@@ -733,72 +733,54 @@
         </div>
     </section>
 
-    <!-- Enhanced Footer -->
-    <footer class="bg-gray-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+    <!-- Footer -->
+    <footer class="bg-white border-t">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <h4 class="text-xl font-bold mb-6">À propos</h4>
-                    <ul class="space-y-4">
-                        <li><a href="#" class="hover:text-gray-300 transition-colors">Qui sommes-nous</a></li>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors">Carrières</a></li>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors">Presse</a></li>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors">Blog</a></li>
+                    <h4 class="font-medium mb-4">Assistance</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:underline">Centre d'aide</a></li>
+                        <li><a href="#" class="hover:underline">Informations de sécurité</a></li>
+                        <li><a href="#" class="hover:underline">Options d'annulation</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-xl font-bold mb-6">Communauté</h4>
-                    <ul class="space-y-4">
-                        <li><a href="#" class="hover:text-gray-300 transition-colors">Forum</a></li>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors">Devenir hôte</a></li>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors">Parrainage</a></li>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors">Événements</a></li>
+                    <h4 class="font-medium mb-4">Communauté</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:underline">Airbnb.org</a></li>
+                        <li><a href="#" class="hover:underline">Lutte contre la discrimination</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-xl font-bold mb-6">Assistance</h4>
-                    <ul class="space-y-4">
-                        <li><a href="#" class="hover:text-gray-300 transition-colors">Centre d'aide</a></li>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors">Sécurité</a></li>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors">Annulation</a></li>
-                        <li><a href="#" class="hover:text-gray-300 transition-colors">COVID-19</a></li>
+                    <h4 class="font-medium mb-4">Accueil</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:underline">Héberger des voyageurs</a></li>
+                        <li><a href="#" class="hover:underline">Forum de la communauté</a></li>
+                        <li><a href="#" class="hover:underline">Hébergement responsable</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-xl font-bold mb-6">Suivez-nous</h4>
-                    <div class="flex space-x-4">
-                        <a href="#" class="hover:text-gray-300 transition-colors">
-                            <i class="fab fa-facebook-f text-2xl"></i>
-                        </a>
-                        <a href="#" class="hover:text-gray-300 transition-colors">
-                            <i class="fab fa-twitter text-2xl"></i>
-                        </a>
-                        <a href="#" class="hover:text-gray-300 transition-colors">
-                            <i class="fab fa-instagram text-2xl"></i>
-                        </a>
-                        <a href="#" class="hover:text-gray-300 transition-colors">
-                            <i class="fab fa-linkedin-in text-2xl"></i>
-                        </a>
-                    </div>
-                    <div class="mt-6">
-                        <h5 class="font-bold mb-4">Moyens de paiement acceptés</h5>
-                        <div class="flex space-x-4">
-                            <i class="fab fa-cc-visa text-2xl"></i>
-                            <i class="fab fa-cc-mastercard text-2xl"></i>
-                            <i class="fab fa-cc-amex text-2xl"></i>
-                            <i class="fab fa-cc-paypal text-2xl"></i>
-                        </div>
-                    </div>
+                    <h4 class="font-medium mb-4">À propos</h4>
+                    <ul class="space-y-2 text-gray-600">
+                        <li><a href="#" class="hover:underline">Newsroom</a></li>
+                        <li><a href="#" class="hover:underline">Nouvelles fonctionnalités</a></li>
+                        <li><a href="#" class="hover:underline">Carrières</a></li>
+                    </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <div class="text-gray-400 text-sm">
-                    © 2025 MaisonLocation. Tous droits réservés.
+            <div class="border-t mt-8 pt-8 flex justify-between items-center">
+                <div class="text-gray-600">
+                    © 2025 Airbnb, Inc. · Confidentialité · Conditions générales
                 </div>
-                <div class="flex items-center space-x-6 mt-4 md:mt-0">
-                    <a href="#" class="text-gray-400 hover:text-gray-300 transition-colors">Confidentialité</a>
-                    <a href="#" class="text-gray-400 hover:text-gray-300 transition-colors">Conditions</a>
-                    <a href="#" class="text-gray-400 hover:text-gray-300 transition-colors">Plan du site</a>
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center">
+                        <i class="fas fa-globe mr-2"></i>
+                        <span>Français (FR)</span>
+                    </div>
+                    <div>
+                        <span>EUR</span>
+                    </div>
                 </div>
             </div>
         </div>
