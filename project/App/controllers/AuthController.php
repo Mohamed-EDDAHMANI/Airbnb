@@ -199,9 +199,9 @@ class AuthController extends Controller
     {
         $dotenv = Dotenv::createImmutable(dirname(__DIR__) . '/../');
         $dotenv->load();
-        $clientID = $_ENV['GOOGLE_CLIENT_ID'];
-        $clientSecret = $_ENV['GOOGLE_CLIENT_SECRET'];
-        $redirectUri = $_ENV['REDIRECTURL'];
+        $clientID = getenv('GOOGLE_CLIENT_ID');
+        $clientSecret = getenv('GOOGLE_CLIENT_SECRET');
+        $redirectUri = getenv('REDIRECTURL');
 
         // Create Google Client
         $client = new Client;
