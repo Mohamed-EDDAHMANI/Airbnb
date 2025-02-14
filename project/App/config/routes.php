@@ -24,29 +24,34 @@ $router->get('/index/getAllAnnonce','UserController@getAllAnnonce');
 $router->get('/index/getTopAnnonce','UserController@getTopAnnonce');
 $router->post('/index/getTopCommentaire','UserController@getTopCommentaire');
 
-$router->get('/admin', 'AdminController@adminDashboard');
-$router->get('/admin/users', 'AdminController@getAllUsers');
-$router->get('/admin/getAnnonces', 'AdminController@getAllAnnonces');
-$router->get('/admin/statistiques', controller: 'AdminController@getStatistiques');
-$router->get('/admin/getPopulairePropritaire', 'AdminController@getPopulairePropritaire');
-$router->get('/admin/getRevenux', 'AdminController@getRevenux');
-$router->post('/admin/validationAnnonce', 'AdminController@validationAnnonce');
-$router->post('/admin/validationUser', 'AdminController@validationUser');
-$router->post('/admin/delete/{id}', 'AdminController@deleteAnnonce');
-$router->post('/admin/deleteCommentaires', 'AdminController@deleteCommentaires');
+$router->get('/admin', 'AdminController@Dashboard');
+$router->get('/admin/proprelated/users', 'AdminController@getAllUsers');
+$router->post('/admin/toggleUserStatus', 'AdminController@toggleUserStatus');
+$router->post('/admin/deleteUser', 'AdminController@DeleteUser');
+$router->post('/admin/restoreUser', 'AdminController@restoreUser');
+$router->post('/admin/permanentDeleteUser', 'AdminController@permanentDeleteUser');
+$router->get('/admin/proprelated/annonces', 'AdminController@getAllAnnonces');
+$router->post('/admin/toggleAnnoncesStatus', 'AdminController@toggleUserStatus');
+$router->post('/admin/deleteAnnonces', 'AdminController@deleteAnnonce');
+$router->post('/admin/restoreAnnonces', 'AdminController@restoreUser');
+$router->post('/admin/permanentDeleteAnnonces', 'AdminController@permanentDeleteUser');
+$router->get('/admin/proprelated/populaire_propritaire', 'AdminController@getPopulairePropritaire');
+$router->get('/admin/proprelated/revenus', 'AdminController@getRevenux');
+$router->post('/admin/deleteCommentaires/{id}', 'AdminController@deleteCommentaires');
 $router->post('/admin/gestionLitige', 'AdminController@gestionLitige');
 
-$router->get(route: '/proprietaire', controller: 'proprietaireController@proprietaireDashboard');
-$router->get(route: '/myAnnonces', controller: 'proprietaireController@getMyAnnonces');
-$router->get(route: '/getAnnonceByid/{id}', controller: 'proprietaireController@getAnnonceByid');
-$router->get(route: '/getReservations', controller: 'proprietaireController@getReservations');
+$router->get('/proprietaire','proprietaireController@proprietaireDashboard');
+$router->get('/myAnnonces','proprietaireController@getMyAnnonces');
+$router->get('/getAnnonceByid/{id}','proprietaireController@getAnnonceByid');
+$router->get('/getReservations','proprietaireController@getReservations');
 $router->post('/createAnnonce', 'proprietaireController@createAnnonce');
 $router->post('/deleteAnnonce/{id}', 'proprietaireController@deleteAnnonce');
 $router->post('/UpdateAnnonce/{id}', 'proprietaireController@UpdateAnnonce');
 
-$router->get('login', 'AuthController@getLoginPage');
-$router->post('login', 'AuthController@postLoginPage');
+$router->get('/login', 'AuthController@getLoginPage');
+$router->post('/login', 'AuthController@login');
 
-$router->get('singUp', 'AuthController@getSingUpPage');
-$router->post('singUp', 'AuthController@postSingUpPage');
-
+$router->get('/singUp', 'AuthController@getSingUpPage');
+$router->post('/singUp', 'AuthController@singUp');
+$router->get('/login/google', 'AuthController@authGoogle');
+$router->post('/singUp/google/form', 'AuthController@singUpGoogle');
