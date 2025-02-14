@@ -199,9 +199,21 @@ class AuthController extends Controller
     {
         $dotenv = Dotenv::createImmutable(dirname(__DIR__) . '/../');
         $dotenv->load();
-        $clientID = getenv('GOOGLE_CLIENT_ID');
-        $clientSecret = getenv('GOOGLE_CLIENT_SECRET');
-        $redirectUri = getenv('REDIRECTURL');
+        // $clientID = getenv('GOOGLE_CLIENT_ID');
+        // $clientSecret = getenv('GOOGLE_CLIENT_SECRET');
+        // $redirectUri = getenv('REDIRECTURL');
+
+        $clientID = $_ENV['GOOGLE_CLIENT_ID'];
+        $clientSecret = $_ENV['GOOGLE_CLIENT_SECRET'];
+        $redirectUri = $_ENV['REDIRECTURL'];
+
+        // var_dump($clientID);
+        // // var_dump($clientSecret);
+        // // var_dump($redirectUri);
+        // exit;
+        if (!$clientID || !$clientSecret || !$redirectUri) {
+            die("Error: Missing required Google OAuth configuration. Please check your .env file.");
+        }
 
         // Create Google Client
         $client = new Client;
@@ -253,8 +265,8 @@ class AuthController extends Controller
         $dotenv = Dotenv::createImmutable(dirname(__DIR__) . '/../');
         $dotenv->load();
         // Google OAuth credentials
-        $clientID = $_ENV['CLIENTID'];
-        $clientSecret = $_ENV['CLIENTSECRET'];
+        $clientID = $_ENV['GOOGLE_CLIENT_ID'];
+        $clientSecret = $_ENV['GOOGLE_CLIENT_SECRET'];
         $redirectUri = $_ENV['REDIRECTURL'];
 
         // Create Google Client
