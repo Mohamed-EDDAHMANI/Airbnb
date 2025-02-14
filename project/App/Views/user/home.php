@@ -228,6 +228,11 @@
                                 <div class="absolute bottom-0 p-6">
                                     <h3 class="text-white text-xl font-bold mb-2">Maisons de luxe</h3>
                                     <p class="text-white/80">À partir de 500€/nuit</p>
+                                    <button
+                                        class="mt-4 bg-white text-gray-900 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
+                                        aria-label="Explore Paris">
+                                        Explorer
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -242,6 +247,11 @@
                                 <div class="absolute bottom-0 p-6">
                                     <h3 class="text-white text-xl font-bold mb-2">Appartements</h3>
                                     <p class="text-white/80">À partir de 300€/nuit</p>
+                                    <button
+                                        class="mt-4 bg-white text-gray-900 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
+                                        aria-label="Explore Paris">
+                                        Explorer
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -256,6 +266,11 @@
                                 <div class="absolute bottom-0 p-6">
                                     <h3 class="text-white text-xl font-bold mb-2">Villas avec piscine</h3>
                                     <p class="text-white/80">À partir de 700€/nuit</p>
+                                    <button
+                                        class="mt-4 bg-white text-gray-900 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
+                                        aria-label="Explore Paris">
+                                        Explorer
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -270,6 +285,11 @@
                                 <div class="absolute bottom-0 p-6">
                                     <h3 class="text-white text-xl font-bold mb-2">Chalets</h3>
                                     <p class="text-white/80">À partir de 400€/nuit</p>
+                                    <button
+                                        class="mt-4 bg-white text-gray-900 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
+                                        aria-label="Explore Paris">
+                                        Explorer
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -281,7 +301,7 @@
     </section>
 
     <!-- Enhanced Popular Destinations -->
-    <section id="destinations" class="py-20 bg-gray-100">
+    <!-- <section id="destinations" class="py-20 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="text-3xl font-bold mb-12 text-center">Destinations populaires</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -333,10 +353,9 @@
                         </div>
                     </div>
                 </div>
-                <!-- More destination cards... -->
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Enhanced Featured Properties -->
     <section class="py-20 bg-white">

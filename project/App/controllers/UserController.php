@@ -7,7 +7,7 @@ use App\Core\Redirect;
 use App\Core\ErrorsHandling;
 use App\Classes\User;
 
-class HomeController extends Controller {
+class UserController extends Controller {
 
     private $userModel;
 
@@ -43,6 +43,9 @@ class HomeController extends Controller {
     }
     public function getConversationPage() {
         $this->view('user/conversation');
+    }
+    public function getHistoriquePage() {
+        $this->view('user/myHistoriques');
     }
 
 }

@@ -1,27 +1,28 @@
 <?php
 
-$router->get('/','HomeController@gethomePage');
+$router->get('/','UserController@gethomePage');
 // ---- on the get home page (Page with Auth)
-// $router->get('/home/listAnnonce','HomeController@getAllAnnonce');
-$router->get('/detailsAnnonce','HomeController@detailsAnnonce');
-$router->get('/reservation','HomeController@getReservationPage');
-$router->get('/reservation/reserver','HomeController@reserver');
-$router->get('/myReservations','HomeController@myReservations');
-$router->get('/myReservations/delete/{id}','HomeController@reservationsDelete');
-$router->get('/checkout','HomeController@getpayementPage');
-$router->get('/success','HomeController@getSuccessPage');
-$router->get('/cancel','HomeController@getCancelPage');
-$router->get('/pageAnnonces','HomeController@getAllAnnoncePage');
-$router->get('/conversation','HomeController@getConversationPage');
-$router->get('/payementPage/payer','HomeController@effectuerPayement');
+// $router->get('/home/listAnnonce','UserController@getAllAnnonce');
+$router->get('/detailsAnnonce','UserController@detailsAnnonce');
+$router->get('/reservation','UserController@getReservationPage');
+$router->get('/reservation/reserver','UserController@reserver');
+$router->get('/myReservations','UserController@myReservations');
+$router->get('/myReservations/delete/{id}','UserController@reservationsDelete');
+$router->get('/checkout','UserController@getpayementPage');
+$router->get('/success','UserController@getSuccessPage');
+$router->get('/cancel','UserController@getCancelPage');
+$router->get('/pageAnnonces','UserController@getAllAnnoncePage');
+$router->get('/conversation','UserController@getConversationPage');
+$router->get('/myHistoriques','UserController@getHistoriquePage');
+$router->get('/payementPage/payer','UserController@effectuerPayement');
 
 //sans auth
-$router->get('/index','HomeController@getIndexPage');
+$router->get('/index','UserController@getIndexPage');
 // ---- on the get index page (Page without Auth)
-// $router->get('/index/listAnnonce','HomeController@listAnnonce');
-$router->get('/index/getAllAnnonce','HomeController@getAllAnnonce');
-$router->get('/index/getTopAnnonce','HomeController@getTopAnnonce');
-$router->post('/index/getTopCommentaire','HomeController@getTopCommentaire');
+// $router->get('/index/listAnnonce','UserController@listAnnonce');
+$router->get('/index/getAllAnnonce','UserController@getAllAnnonce');
+$router->get('/index/getTopAnnonce','UserController@getTopAnnonce');
+$router->post('/index/getTopCommentaire','UserController@getTopCommentaire');
 
 $router->get('/admin', 'AdminController@adminDashboard');
 $router->get('/admin/users', 'AdminController@getAllUsers');
