@@ -6,14 +6,17 @@ class Sessions
 {
     public static function createUserSession($user){
         $email = $user->getEmail();
-        $userName = $user->getUserName();
+        $name = $user->getName();
         $role = $user->getRole();
         $id = $user->getId();
+        $pic = $user->getPic();
+    
         $_SESSION['user'] = [
             'email'=> $email,
-            'userName'=> $userName,
+            'name'=> $name,
             'role'=> $role,
-            'id'=> $id
+            'id'=> $id,
+            'pic'=> $pic
         ];
         return;
     }

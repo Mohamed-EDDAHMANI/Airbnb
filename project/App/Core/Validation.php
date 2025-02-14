@@ -8,7 +8,7 @@ class Validation
     {
         $email = $user->getEmail();
         $password = $user->getPassword();
-        $userName = $user->getUserName();
+        $userName = $user->getName();
         $role = $user->getRole();
 
         $passwordPattern = "/^.{4,}$/";

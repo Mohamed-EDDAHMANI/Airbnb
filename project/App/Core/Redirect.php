@@ -5,7 +5,6 @@ use App\Core\Controller;
 
 class Redirect extends Controller{
     public static function redirectAfterLogin($user) {
-        
         $role = $user->getRole();
         switch ($role) {
             case 'admin':
@@ -13,12 +12,10 @@ class Redirect extends Controller{
                 $controller->view('admin/dashboard');
                 break;
             case 'proprietaire':
-                $controller = new Controller();
-                $controller->view('proprietaire/dashboard');
+                header('Location: /proprietaire');
                 break;
             case 'voyageur':
-                $controller = new Controller();
-                $controller->view('admin/dashboard');
+                header('Location: /home');
                 break;
             
             default:
@@ -26,6 +23,12 @@ class Redirect extends Controller{
                 break;
         }
         return ;
+    }
+
+    public static function redirectToSamePage() {
+        $url = $_SERVER['REQUEST_URI'];
+        header('Location: '.$url.'');
+        
     }
 }
 

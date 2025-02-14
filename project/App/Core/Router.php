@@ -35,11 +35,8 @@ class Router
 
     public function dispatch($url, $method)
     {
-        // var_dump($url);
-        // exit;
 
         $path = parse_url($url, PHP_URL_PATH);
-        // $path = str_replace('/', '', $path);
 
         if (isset($this->routes[$method][$path])) {
 

@@ -13,8 +13,7 @@
         <div class="bg-white rounded-2xl shadow-xl p-8">
             <div class="text-center mb-8">
                 <div class="flex justify-centre items-centre px-24">
-                    <img src="https://th.bing.com/th?id=OIP.36Gb_gAegvI34HOVNXf-QgHaFj&w=474&h=355&c=7&qlt=80&bgcl=fffffe&r=0&o=6&pid=23.1"
-                        alt="Google Logo" class="mx-auto mb-4 w-10 h-full">
+                    <img src="https://lh3.googleusercontent.com/0rpHlrX8IG77awQMuUZpQ0zGWT7HRYtpncsuRnFo6V3c8Lh2hPjXnEuhDDd-OsLz1vua4ld2rlUYFAaBYk-rZCODmi2eJlwUEVsZgg" alt="Google Logo" class="mx-auto mb-4 w-10 h-full">
                     <h1 class="text-2xl">+</h1>
                     <svg class="mx-auto h-12 w-auto" viewBox="0 0 1991.3 2159.5" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -26,15 +25,14 @@
                     </svg>
                 </div>
                 <h2 class="text-2xl font-bold text-gray-800">Complete Your Profile</h2>
-                <p class="text-gray-600 mt-2">Welcome Back <?= $data['fullName'] ?></p>
+                <p class="text-gray-600 mt-2">Welcome Back <?= $data['name'] ?></p>
             </div>
 
-            <form class="space-y-6" method="POST" action="/singUp">
-                <input type="text" name="name" value="<?= $data['fullName'] ?>" class="hidden">
-                <input type="text" name="pic" value="<?= $data['pic'] ?>" class="hidden">
+            <form class="space-y-6" method="POST" action="/singUp/google/form" enctype="multipart/form-data">
+                <input type="text" name="name" value="<?= $data['name'] ?>" class="hidden">
                 <input type="text" name="email" value="<?= $data['email'] ?>" class="hidden">
                 <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
-                    <img src="<?= $data['pic'] ?>" alt="Profile" class="w-10 h-10 rounded-full">
+                    <img src="" alt="Profile" class="w-10 h-10 rounded-full">
                     <div>
                         <p class="font-medium text-gray-900">Google Account</p>
                         <p class="text-sm text-gray-500"><?= $data['email'] ?></p>
@@ -55,6 +53,12 @@
                             <span>Proprietaire</span>
                         </label>
                     </div>
+                </div>
+
+                 <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Upload Profile Image</label>
+                    <input type="file" name="pic" accept="image/*"
+                        class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                 </div>
 
                 <div>

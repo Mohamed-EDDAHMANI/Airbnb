@@ -20,37 +20,52 @@ class UserModel extends Model
         $password = $user->getPassword();
         $query = "SELECT * FROM {$this::$table} WHERE email = :email AND password = :password";
         $stmt = $this->connection->prepare($query);
-        $stmt->bindParam(':email', $email, PDO::PARAM_INT);
-        $stmt->bindParam(':password', $password, PDO::PARAM_INT);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
         $stmt->execute();
-        if ($stmt->execute()) {
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($user){
+            return new User($user['email'], $user['password'], $user['name'], $user['role'], $user['id'],$user['pic']);
+        }else{
+            return false ;
+        }
+    }
+
+    public function findUserByEmail($user)
+    {
+        $email = $user->getEmail();
+        $query = "SELECT * FROM {$this::$table} WHERE email = :email";
+        $stmt = $this->connection->prepare($query);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        if($user){
             return new User($user['email'], $user['password'], $user['name'], $user['role'], $user['id']);
-        } else {
-            return false;
+        }else{
+            return false ;
         }
     }
 
     public function createNewUser($user)
     {
-        $email = $user->getEmail();
-        $password = $user->getPassword();
-        $userName = $user->getUserName();
-        $role = $user->getRole();
-        $query = "INSERT INTO {$this::$table} (email, password, name, role) 
-              VALUES (:email, :password, :userName, :role)";
-        $stmt = $this->connection->prepare($query);
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
-        $stmt->bindParam(':name', $userName, PDO::PARAM_STR);
-        $stmt->bindParam(':role', $role, PDO::PARAM_STR);
-        $stmt->execute();
-        if ($stmt->execute()) {
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-            return new User($user['email'], $user['password'], $user['userName'], $user['role'], $user['id']);
-        } else {
-            return false;
-        }
+            $email = $user->getEmail();
+            $password = $user->getPassword();
+            $name = $user->getName();
+            $role = $user->getRole();
+            $pic = $user->getPic();
+            $query = "INSERT INTO {$this::$table} (email, password, name, role, pic) 
+                  VALUES (:email, :password, :name, :role, :pic)";
+            $stmt = $this->connection->prepare($query);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+            $stmt->bindParam(':role', $role, PDO::PARAM_STR);
+            $stmt->bindParam(':pic', $pic, PDO::PARAM_STR);
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
     }
 
     public function connectUser($user)
@@ -77,7 +92,7 @@ class UserModel extends Model
         $query = "SELECT is_connected FROM {$this::$table} 
               WHERE id = :id";
         $stmt = $this->connection->prepare($query);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':id', $id, PDO::PARAM_STR);
         $stmt->execute();
         return (bool) $stmt->fetchColumn();
     }

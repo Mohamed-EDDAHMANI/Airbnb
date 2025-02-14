@@ -3,9 +3,9 @@
 namespace App\Core;
 
 class ErrorsHandling {
-    public static function handlLoginError() {
+    public static function handlError($message) {
         $_SESSION['error'] = [
-            'message'=> 'invalid Email or Password '
+            'message'=> $message
         ];
         return ;
     }
