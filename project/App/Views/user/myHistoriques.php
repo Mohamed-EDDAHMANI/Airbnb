@@ -12,7 +12,6 @@
 </head>
 
 <body class="bg-gray-50">
-    <!-- Navigation -->
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
@@ -28,16 +27,14 @@
                     <span>Airbnb</span>
                 </a>
 
-                <!-- Enhanced Navigation Menu -->
-                <!-- <div class="hidden md:flex items-center space-x-8">
-                    <a href="#featured" class="text-gray-600 hover:text-gray-900">Découvrir</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-gray-900">Home</a>
                     <a href="#destinations" class="text-gray-600 hover:text-gray-900">Destinations</a>
                     <a href="#experiences" class="text-gray-600 hover:text-gray-900">Expériences</a>
                     <a href="#contact" class="text-gray-600 hover:text-gray-900">Contact</a>
                     <a href="#about" class="text-gray-600 hover:text-gray-900">À propos</a>
-                </div> -->
+                </div>
 
-                <!-- Enhanced User Menu -->
                 <div class="flex items-center space-x-4">
                     <button class="hidden md:block hover:bg-gray-100 px-4 py-2 rounded-full border border-gray-300"
                         aria-label="Become a host">
@@ -53,25 +50,24 @@
                             <i class="fas fa-bars"></i>
                             <i class="fas fa-user-circle text-2xl text-gray-600"></i>
                         </button>
-                        <!-- Enhanced Dropdown Menu -->
                         <div id="userMenu"
                             class="hidden absolute right-0 mt-2 bg-white rounded-xl shadow-xl border p-4 w-64">
                             <div class="space-y-3">
-                                <a href="#" class="block hover:bg-gray-100 px-4 py-2 rounded-lg font-medium">
+                                <a href="/signUp" class="block hover:bg-gray-100 px-4 py-2 rounded-lg font-medium">
                                     <i class="fas fa-user-plus mr-2"></i> S'inscrire
                                 </a>
-                                <a href="#" class="block hover:bg-gray-100 px-4 py-2 rounded-lg"
+                                <a href="Login" class="block hover:bg-gray-100 px-4 py-2 rounded-lg"
                                     onclick="openLoginModal()">
                                     <i class="fas fa-sign-in-alt mr-2"></i> Se connecter
                                 </a>
                                 <hr>
-                                <a href="#" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
-                                    <i class="fas fa-home mr-2"></i> Historique
+                                <a href="/myHistoriques" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
+                                    <i class="fas fa-home mr-2"></i> MyHistoriques
                                 </a>
-                                <a href="#" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
+                                <a href="myFavorite" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
                                     <i class="fas fa-heart mr-2"></i> Favoris
                                 </a>
-                                <a href="#" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
+                                <a href="Help" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
                                     <i class="fas fa-question-circle mr-2"></i> Aide
                                 </a>
                             </div>
@@ -81,15 +77,13 @@
             </div>
         </div>
     </nav>
-
-    <!-- Main Content -->
+    
     <main class="pt-20 pb-12 px-4 max-w-7xl mx-auto">
-        <!-- Header Section -->
         <div class="mb-8">
             <br>
-            <h1 class="text-3xl font-bold mb-4">Historique des Réservations</h1>
+            <br>
             <div class="flex flex-wrap items-center justify-between gap-4">
-                <!-- Filters -->
+                <h1 class="text-3xl font-bold mb-4">Historique des Réservations</h1>
                 <div class="flex flex-wrap gap-4">
                     <select
                         class="px-4 py-2 border rounded-full hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-[#FF385C]">
@@ -106,20 +100,13 @@
                         <option value="upcoming">À venir</option>
                     </select>
                 </div>
-                <!-- Export Button -->
-                <button
-                    class="px-6 py-2 bg-[#FF385C] text-white rounded-full hover:bg-[#FF385C]/90 transition-colors flex items-center gap-2">
-                    <i class="fas fa-download"></i>
-                    Exporter
-                </button>
+
             </div>
         </div>
 
-        <!-- Reservations Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Reservation Card 1 -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                <img src="../../../public/assets/images/1.jpg" alt="Villa de Luxe" class="w-full h-48 object-cover">
+                <img src="../../../public/assets/images/25.jpg" alt="Villa de Luxe" class="w-full h-48 object-cover">
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -145,7 +132,9 @@
                     <div class="flex gap-2">
                         <button
                             class="flex-1 px-4 py-2 border border-[#FF385C] text-[#FF385C] rounded-lg hover:bg-[#FF385C] hover:text-white transition-colors">
-                            Réserver à nouveau
+                            <a href="/reservation">
+                                Réserver à nouveau
+                            </a>
                         </button>
                         <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
                             <i class="fas fa-receipt"></i>
@@ -154,9 +143,9 @@
                 </div>
             </div>
 
-            <!-- Reservation Card 2 -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                <img src="../../../public/assets/images/2.jpg" alt="Appartement Moderne" class="w-full h-48 object-cover">
+                <img src="../../../public/assets/images/21.jpg" alt="Appartement Moderne"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -182,7 +171,9 @@
                     <div class="flex gap-2">
                         <button
                             class="flex-1 px-4 py-2 border border-[#FF385C] text-[#FF385C] rounded-lg hover:bg-[#FF385C] hover:text-white transition-colors">
-                            Réserver à nouveau
+                            <a href="/reservation">
+                                Réserver à nouveau
+                            </a>
                         </button>
                         <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
                             <i class="fas fa-receipt"></i>
@@ -191,9 +182,9 @@
                 </div>
             </div>
 
-            <!-- Reservation Card 3 -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-                <img src="../../../public/assets/images/3.jpg" alt="Chalet en Montagne" class="w-full h-48 object-cover">
+                <img src="../../../public/assets/images/3.jpg" alt="Chalet en Montagne"
+                    class="w-full h-48 object-cover">
                 <div class="p-6">
                     <div class="flex justify-between items-start mb-4">
                         <div>
@@ -218,9 +209,14 @@
                     </div>
                     <div class="flex gap-2">
                         <button
-                            class="flex-1 px-4 py-2 bg-[#FF385C] text-white rounded-lg hover:bg-[#FF385C]/90 transition-colors">
+                            class="flex-1 px-4 py-2 border border-[#FF385C] text-[#FF385C] rounded-lg hover:bg-[#FF385C] hover:text-white transition-colors">
                             Modifier
                         </button>
+                        <button
+                            class="flex-1 px-4 py-2 bg-[#FF385C] text-white rounded-lg hover:bg-[#FF385C]/90 transition-colors">
+                            Annulé
+                        </button>
+
                         <button class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
                             <i class="fas fa-receipt"></i>
                         </button>
@@ -229,7 +225,6 @@
             </div>
         </div>
 
-        <!-- Pagination -->
         <div class="mt-8 flex justify-center">
             <nav class="flex items-center gap-2">
                 <button class="p-2 border rounded-full hover:bg-gray-50 disabled:opacity-50" disabled>
@@ -246,7 +241,6 @@
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-white border-t">
         <div class="max-w-7xl mx-auto px-4 py-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -299,143 +293,176 @@
         </div>
     </footer>
 
-    <!-- Bibliothèque jsPDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-<!-- Bibliothèque html2canvas pour la capture d'écran (optionnel) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-<script>
-class PDFGenerator {
-    constructor() {
-        this.initializeEventListeners();
-    }
+    <script>
+        const userMenu = document.getElementById('userMenu');
+        const userMenuBtn = document.getElementById('userMenuBtn');
 
-    initializeEventListeners() {
-        const receiptButtons = document.querySelectorAll('.fa-receipt');
-        receiptButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const reservationCard = e.target.closest('.bg-white.rounded-xl');
-                if (reservationCard) {
-                    this.generateReservationPDF(reservationCard);
-                }
-            });
+        document.addEventListener('click', function (event) {
+            if (!userMenuBtn.contains(event.target) && !userMenu.contains(event.target)) {
+                userMenu.classList.add('hidden');
+            }
         });
-    }
 
-    async generateReservationPDF(reservationCard) {
-        try {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF('p', 'mm', 'a4');
-            
-            const pageWidth = 210;
-            const pageHeight = 297;
-            const margin = 10;
+        userMenuBtn.addEventListener('click', function (event) {
+            event.stopPropagation();
+            userMenu.classList.toggle('hidden');
+        });
 
-            const airbnbPink = [255, 56, 92];
-            const lightGray = [150, 150, 150];
+        function openLoginModal() {
+            const modal = document.getElementById('loginModal');
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
 
-            doc.setFillColor(...airbnbPink);
-            doc.rect(0, 0, pageWidth, 30, 'F');
-            doc.setTextColor(255, 255, 255);
-            doc.setFontSize(16);
-            doc.setFont('helvetica', 'bold');
-            doc.text('Airbnb - Détails de Réservation', pageWidth / 2, 20, { align: 'center' });
+                const modalContent = modal.querySelector('.bg-white');
+                if (modalContent) {
+                    modalContent.classList.add('animate-fade-in');
+                }
+            }
+        }
 
-            const propertyName = reservationCard.querySelector('h3').textContent;
-            const propertyLocation = reservationCard.querySelector('p.text-gray-600').textContent;
-            const dates = reservationCard.querySelector('.flex.items-center:nth-child(1) span').textContent;
-            const guests = reservationCard.querySelector('.flex.items-center:nth-child(2) span').textContent;
-            const price = reservationCard.querySelector('.flex.items-center:nth-child(3) span').textContent;
-            const status = reservationCard.querySelector('span[class*="px-3 py-1"]').textContent;
+        function closeLoginModal() {
+            const modal = document.getElementById('loginModal');
+            if (modal) {
+                document.body.style.overflow = 'auto';
+                modal.classList.add('hidden');
+            }
+        }
 
-            const propertyImage = reservationCard.querySelector('img');
-            
-            doc.setFont('helvetica', 'normal');
-            doc.setTextColor(0, 0, 0);
+        class PDFGenerator {
+            constructor() {
+                this.initializeEventListeners();
+            }
 
-            if (propertyImage) {
+            initializeEventListeners() {
+                const receiptButtons = document.querySelectorAll('.fa-receipt');
+                receiptButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const reservationCard = e.target.closest('.bg-white.rounded-xl');
+                        if (reservationCard) {
+                            this.generateReservationPDF(reservationCard);
+                        }
+                    });
+                });
+            }
+
+            async generateReservationPDF(reservationCard) {
                 try {
-                    const imgData = await this.getBase64Image(propertyImage.src);
-                    doc.addImage(imgData, 'JPEG', margin, 40, pageWidth - 2*margin, 80, '', 'FAST');
-                } catch (imgError) {
-                    console.warn('Impossible de charger l\'image:', imgError);
+                    const { jsPDF } = window.jspdf;
+                    const doc = new jsPDF('p', 'mm', 'a4');
+
+                    const pageWidth = 210;
+                    const pageHeight = 297;
+                    const margin = 10;
+
+                    const airbnbPink = [255, 56, 92];
+                    const lightGray = [150, 150, 150];
+
+                    doc.setFillColor(...airbnbPink);
+                    doc.rect(0, 0, pageWidth, 30, 'F');
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(16);
+                    doc.setFont('helvetica', 'bold');
+                    doc.text('Airbnb - Détails de Réservation', pageWidth / 2, 20, { align: 'center' });
+
+                    const propertyName = reservationCard.querySelector('h3').textContent;
+                    const propertyLocation = reservationCard.querySelector('p.text-gray-600').textContent;
+                    const dates = reservationCard.querySelector('.flex.items-center:nth-child(1) span').textContent;
+                    const guests = reservationCard.querySelector('.flex.items-center:nth-child(2) span').textContent;
+                    const price = reservationCard.querySelector('.flex.items-center:nth-child(3) span').textContent;
+                    const status = reservationCard.querySelector('span[class*="px-3 py-1"]').textContent;
+
+                    const propertyImage = reservationCard.querySelector('img');
+
+                    doc.setFont('helvetica', 'normal');
+                    doc.setTextColor(0, 0, 0);
+
+                    if (propertyImage) {
+                        try {
+                            const imgData = await this.getBase64Image(propertyImage.src);
+                            doc.addImage(imgData, 'JPEG', margin, 40, pageWidth - 2 * margin, 80, '', 'FAST');
+                        } catch (imgError) {
+                            console.warn('Impossible de charger l\'image:', imgError);
+                        }
+                    }
+
+                    let yPos = 130;
+                    doc.setFontSize(14);
+                    doc.setTextColor(...airbnbPink);
+                    doc.text(propertyName, pageWidth / 2, yPos, { align: 'center' });
+
+                    doc.setFontSize(10);
+                    doc.setTextColor(0, 0, 0);
+                    yPos += 10;
+                    doc.text(`Localisation: ${propertyLocation}`, margin, yPos);
+                    yPos += 8;
+                    doc.text(`Dates: ${dates}`, margin, yPos);
+                    yPos += 8;
+                    doc.text(`Nombre de voyageurs: ${guests}`, margin, yPos);
+                    yPos += 8;
+                    doc.text(`Prix total: ${price}`, margin, yPos);
+                    yPos += 8;
+                    doc.text(`Statut: ${status}`, margin, yPos);
+
+                    yPos += 15;
+                    doc.setFillColor(240, 240, 240);
+                    doc.rect(margin, yPos, pageWidth - 2 * margin, 30, 'F');
+                    doc.setTextColor(0, 0, 0);
+                    doc.setFontSize(9);
+
+                    yPos += 10;
+                    doc.text('Informations supplémentaires:', margin, yPos);
+                    yPos += 8;
+                    doc.text('- Réservation effectuée via Airbnb', margin + 5, yPos);
+                    yPos += 6;
+                    doc.text('- Politique d\'annulation applicable', margin + 5, yPos);
+
+                    doc.setLineWidth(0.5);
+                    doc.setDrawColor(...lightGray);
+                    doc.line(margin, pageHeight - 20, pageWidth - margin, pageHeight - 20);
+
+                    doc.setFontSize(8);
+                    doc.setTextColor(...lightGray);
+                    doc.text('Généré par Airbnb', margin, pageHeight - 10);
+                    doc.text(new Date().toLocaleDateString(), pageWidth - margin, pageHeight - 10, { align: 'right' });
+
+                    doc.save(`Reservation_${propertyName.replace(/\s+/g, '_')}.pdf`);
+
+                    NotificationManager.show('PDF téléchargé avec succès !');
+
+                } catch (error) {
+                    console.error('Erreur lors de la génération du PDF:', error);
+                    NotificationManager.show('Erreur lors du téléchargement du PDF', 'error');
                 }
             }
 
-            let yPos = 130;
-            doc.setFontSize(14);
-            doc.setTextColor(...airbnbPink);
-            doc.text(propertyName, pageWidth / 2, yPos, { align: 'center' });
-
-            doc.setFontSize(10);
-            doc.setTextColor(0, 0, 0);
-            yPos += 10;
-            doc.text(`Localisation: ${propertyLocation}`, margin, yPos);
-            yPos += 8;
-            doc.text(`Dates: ${dates}`, margin, yPos);
-            yPos += 8;
-            doc.text(`Nombre de voyageurs: ${guests}`, margin, yPos);
-            yPos += 8;
-            doc.text(`Prix total: ${price}`, margin, yPos);
-            yPos += 8;
-            doc.text(`Statut: ${status}`, margin, yPos);
-
-            yPos += 15;
-            doc.setFillColor(240, 240, 240);
-            doc.rect(margin, yPos, pageWidth - 2*margin, 30, 'F');
-            doc.setTextColor(0, 0, 0);
-            doc.setFontSize(9);
-            
-            yPos += 10;
-            doc.text('Informations supplémentaires:', margin, yPos);
-            yPos += 8;
-            doc.text('- Réservation effectuée via Airbnb', margin + 5, yPos);
-            yPos += 6;
-            doc.text('- Politique d\'annulation applicable', margin + 5, yPos);
-
-            doc.setLineWidth(0.5);
-            doc.setDrawColor(...lightGray);
-            doc.line(margin, pageHeight - 20, pageWidth - margin, pageHeight - 20);
-            
-            doc.setFontSize(8);
-            doc.setTextColor(...lightGray);
-            doc.text('Généré par Airbnb', margin, pageHeight - 10);
-            doc.text(new Date().toLocaleDateString(), pageWidth - margin, pageHeight - 10, { align: 'right' });
-
-            doc.save(`Reservation_${propertyName.replace(/\s+/g, '_')}.pdf`);
-
-            NotificationManager.show('PDF téléchargé avec succès !');
-
-        } catch (error) {
-            console.error('Erreur lors de la génération du PDF:', error);
-            NotificationManager.show('Erreur lors du téléchargement du PDF', 'error');
+            getBase64Image(imgUrl) {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.crossOrigin = 'Anonymous';
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0);
+                        const dataURL = canvas.toDataURL('image/jpeg');
+                        resolve(dataURL);
+                    };
+                    img.onerror = reject;
+                    img.src = imgUrl;
+                });
+            }
         }
-    }
 
-    getBase64Image(imgUrl) {
-        return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.crossOrigin = 'Anonymous'; 
-            img.onload = () => {
-                const canvas = document.createElement('canvas');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0);
-                const dataURL = canvas.toDataURL('image/jpeg');
-                resolve(dataURL);
-            };
-            img.onerror = reject;
-            img.src = imgUrl;
+        document.addEventListener('DOMContentLoaded', () => {
+            window.pdfGenerator = new PDFGenerator();
         });
-    }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-    window.pdfGenerator = new PDFGenerator();
-});
-</script>  
+    </script>
 </body>
 
 </html>

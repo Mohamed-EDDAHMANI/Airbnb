@@ -66,7 +66,6 @@
 </head>
 
 <body class="bg-gray-50">
-    <!-- Enhanced Navigation Bar -->
     <nav class="bg-white shadow-lg fixed w-full z-50">
         <div class="max-w-7xl mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
@@ -82,16 +81,14 @@
                     <span>Airbnb</span>
                 </a>
 
-                <!-- Enhanced Navigation Menu -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="#featured" class="text-gray-600 hover:text-gray-900">Découvrir</a>
+                    <a href="/" class="text-gray-600 hover:text-gray-900">Home</a>
                     <a href="#destinations" class="text-gray-600 hover:text-gray-900">Destinations</a>
                     <a href="#experiences" class="text-gray-600 hover:text-gray-900">Expériences</a>
                     <a href="#contact" class="text-gray-600 hover:text-gray-900">Contact</a>
                     <a href="#about" class="text-gray-600 hover:text-gray-900">À propos</a>
                 </div>
 
-                <!-- Enhanced User Menu -->
                 <div class="flex items-center space-x-4">
                     <button class="hidden md:block hover:bg-gray-100 px-4 py-2 rounded-full border border-gray-300"
                         aria-label="Become a host">
@@ -107,25 +104,24 @@
                             <i class="fas fa-bars"></i>
                             <i class="fas fa-user-circle text-2xl text-gray-600"></i>
                         </button>
-                        <!-- Enhanced Dropdown Menu -->
                         <div id="userMenu"
                             class="hidden absolute right-0 mt-2 bg-white rounded-xl shadow-xl border p-4 w-64">
                             <div class="space-y-3">
-                                <a href="#" class="block hover:bg-gray-100 px-4 py-2 rounded-lg font-medium">
+                                <a href="/signUp" class="block hover:bg-gray-100 px-4 py-2 rounded-lg font-medium">
                                     <i class="fas fa-user-plus mr-2"></i> S'inscrire
                                 </a>
-                                <a href="#" class="block hover:bg-gray-100 px-4 py-2 rounded-lg"
+                                <a href="Login" class="block hover:bg-gray-100 px-4 py-2 rounded-lg"
                                     onclick="openLoginModal()">
                                     <i class="fas fa-sign-in-alt mr-2"></i> Se connecter
                                 </a>
                                 <hr>
-                                <a href="#" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
-                                    <i class="fas fa-home mr-2"></i> Historique
+                                <a href="/myHistoriques" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
+                                    <i class="fas fa-home mr-2"></i> MyHistoriques
                                 </a>
-                                <a href="#" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
+                                <a href="myFavorite" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
                                     <i class="fas fa-heart mr-2"></i> Favoris
                                 </a>
-                                <a href="#" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
+                                <a href="Help" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
                                     <i class="fas fa-question-circle mr-2"></i> Aide
                                 </a>
                             </div>
@@ -136,14 +132,10 @@
         </div>
     </nav>
 
-    <!-- Enhanced Hero Section -->
     <section class="hero-section h-screen flex items-center justify-center text-white relative overflow-hidden">
-
-        <!-- Background Image -->
         <div class="absolute inset-0">
             <img src="../../../assets/images/3.jpg" alt="Vue de logements"
                 class="w-full h-full object-cover object-center" loading="lazy">
-            <!-- <div class="absolute inset-0 bg-gradient-to-br from-gray-900/60 to-red-500/60"></div> -->
         </div>
 
         <div class="max-w-4xl mx-auto text-center px-4 relative z-10">
@@ -154,7 +146,6 @@
                 Trouvez des locations uniques pour des séjours mémorables.
             </p>
 
-            <!-- Enhanced Search Bar -->
             <div class="bg-white rounded-full shadow-xl p-2 md:p-3 lg:p-4 animate-fade-in delay-200">
                 <form class="flex flex-wrap md:flex-nowrap items-center" action="#" method="GET">
 
@@ -194,7 +185,6 @@
                         </div>
                     </div>
 
-
                     <div class="w-full md:w-1/4 px-2 py-1">
                         <button type="submit"
                             class="w-full py-3 md:py-2 lg:py-3 px-4 rounded-full bg-[#FF385C] hover:bg-red-700 text-white font-semibold focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 transition-colors duration-200">
@@ -205,7 +195,6 @@
             </div>
         </div>
 
-        <!-- Scroll Indicator -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
             <a href="#featured" aria-label="Scroll to featured properties">
                 <i class="fas fa-chevron-down text-3xl"></i>
@@ -213,16 +202,14 @@
         </div>
     </section>
 
-    <!-- Enhanced Categories Section -->
     <section id="featured" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="text-3xl font-bold mb-12 text-center">Découvrez nos hébergements par catégorie</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Enhanced Category Cards -->
                 <div class="category-card group cursor-pointer">
                     <div class="rounded-xl overflow-hidden shadow-lg">
                         <div class="relative h-64 overflow-hidden">
-                            <img src="../../../assets/images/3.jpg" alt="Maisons de luxe"
+                            <img src="../../../assets/images/4.jpg" alt="Maisons de luxe"
                                 class="category-image w-full h-full object-cover loading=" lazy">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
                                 <div class="absolute bottom-0 p-6">
@@ -231,7 +218,9 @@
                                     <button
                                         class="mt-4 bg-white text-gray-900 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
                                         aria-label="Explore Paris">
-                                        Explorer
+                                        <a href="/reservation">
+                                            Explorer
+                                        </a>
                                     </button>
                                 </div>
                             </div>
@@ -241,7 +230,7 @@
                 <div class="category-card group cursor-pointer">
                     <div class="rounded-xl overflow-hidden shadow-lg">
                         <div class="relative h-64 overflow-hidden">
-                            <img src="../../../assets/images/3.jpg" alt="Appartements"
+                            <img src="../../../assets/images/5.jpg" alt="Appartements"
                                 class="category-image w-full h-full object-cover loading=" lazy">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
                                 <div class="absolute bottom-0 p-6">
@@ -250,7 +239,9 @@
                                     <button
                                         class="mt-4 bg-white text-gray-900 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
                                         aria-label="Explore Paris">
-                                        Explorer
+                                        <a href="/reservation">
+                                            Explorer
+                                        </a>
                                     </button>
                                 </div>
                             </div>
@@ -260,7 +251,7 @@
                 <div class="category-card group cursor-pointer">
                     <div class="rounded-xl overflow-hidden shadow-lg">
                         <div class="relative h-64 overflow-hidden">
-                            <img src="../../../assets/images/3.jpg" alt="Villas avec piscine"
+                            <img src="../../../assets/images/6.jpg" alt="Villas avec piscine"
                                 class="category-image w-full h-full object-cover loading=" lazy">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
                                 <div class="absolute bottom-0 p-6">
@@ -269,7 +260,9 @@
                                     <button
                                         class="mt-4 bg-white text-gray-900 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
                                         aria-label="Explore Paris">
-                                        Explorer
+                                        <a href="/reservation">
+                                            Explorer
+                                        </a>
                                     </button>
                                 </div>
                             </div>
@@ -279,7 +272,7 @@
                 <div class="category-card group cursor-pointer">
                     <div class="rounded-xl overflow-hidden shadow-lg">
                         <div class="relative h-64 overflow-hidden">
-                            <img src="../../../assets/images/3.jpg" alt="Chalets"
+                            <img src="../../../assets/images/7.jpg" alt="Chalets"
                                 class="category-image w-full h-full object-cover loading=" lazy">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
                                 <div class="absolute bottom-0 p-6">
@@ -288,87 +281,31 @@
                                     <button
                                         class="mt-4 bg-white text-gray-900 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
                                         aria-label="Explore Paris">
-                                        Explorer
+                                        <a href="/reservation">
+                                            Explorer
+                                        </a>
                                     </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- More category cards... -->
             </div>
         </div>
     </section>
 
-    <!-- Enhanced Popular Destinations -->
-    <!-- <section id="destinations" class="py-20 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-12 text-center">Destinations populaires</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer">
-                    <img src="../../../assets/images/3.jpg" alt="Paris"
-                        class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300 loading="
-                        lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
-                        <div class="absolute bottom-0 p-6">
-                            <h3 class="text-white text-2xl font-bold mb-2">Paris</h3>
-                            <p class="text-white/80">Plus de 1000 propriétés</p>
-                            <button
-                                class="mt-4 bg-white text-gray-900 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
-                                aria-label="Explore Paris">
-                                Explorer
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer">
-                    <img src="../../../assets/images/3.jpg" alt="Nice"
-                        class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300 loading="
-                        lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
-                        <div class="absolute bottom-0 p-6">
-                            <h3 class="text-white text-2xl font-bold mb-2">Nice</h3>
-                            <p class="text-white/80">Plus de 800 propriétés</p>
-                            <button
-                                class="mt-4 bg-white text-gray-900 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
-                                aria-label="Explore Nice">
-                                Explorer
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative rounded-xl overflow-hidden shadow-lg group cursor-pointer">
-                    <img src="../../../assets/images/3.jpg" alt="Lyon"
-                        class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300 loading="
-                        lazy">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent">
-                        <div class="absolute bottom-0 p-6">
-                            <h3 class="text-white text-2xl font-bold mb-2">Lyon</h3>
-                            <p class="text-white/80">Plus de 600 propriétés</p>
-                            <button
-                                class="mt-4 bg-white text-gray-900 px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors"
-                                aria-label="Explore Lyon">
-                                Explorer
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-
-    <!-- Enhanced Featured Properties -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="text-3xl font-bold mb-12 text-center">Propriétés en vedette</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Enhanced Property Card -->
                 <div class="property-card group">
                     <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                         <div class="relative">
                             <div class="relative h-64 overflow-hidden">
-                                <img src="../../../assets/images/3.jpg" alt="Luxurious Villa"
-                                    class="property-image w-full h-full object-cover loading=" lazy">
+                                <a href="/reservation">
+                                    <img src="../../../assets/images/8.jpg" alt="Luxurious Villa"
+                                        class="property-image w-full h-full object-cover loading=" lazy">
+                                </a>
                             </div>
                             <button
                                 class="absolute top-4 right-4 p-2 rounded-full bg-white/80 hover:bg-white transition-colors"
@@ -417,8 +354,10 @@
                     <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                         <div class="relative">
                             <div class="relative h-64 overflow-hidden">
-                                <img src="../../../assets/images/3.jpg" alt="Appartement Vue Mer"
-                                    class="property-image w-full h-full object-cover loading=" lazy">
+                                <a href="/reservation">
+                                    <img src="../../../assets/images/9.jpg" alt="Appartement Vue Mer"
+                                        class="property-image w-full h-full object-cover loading=" lazy">
+                                </a>
                             </div>
                             <button
                                 class="absolute top-4 right-4 p-2 rounded-full bg-white/80 hover:bg-white transition-colors"
@@ -467,8 +406,10 @@
                     <div class="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                         <div class="relative">
                             <div class="relative h-64 overflow-hidden">
-                                <img src="../../../assets/images/3.jpg" alt="Maison de Campagne"
-                                    class="property-image w-full h-full object-cover loading=" lazy">
+                                <a href="/reservation">
+                                    <img src="../../../assets/images/10.jpg" alt="Maison de Campagne"
+                                        class="property-image w-full h-full object-cover loading=" lazy">
+                                </a>
                             </div>
                             <button
                                 class="absolute top-4 right-4 p-2 rounded-full bg-white/80 hover:bg-white transition-colors"
@@ -513,10 +454,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- More property cards... -->
             </div>
 
-            <!-- Property Filters -->
             <div class="flex items-center justify-center space-x-4 mt-12">
                 <button class="px-6 py-2 border-2 border-gray-300 rounded-full hover:border-gray-900 transition-colors"
                     aria-label="Open filters">
@@ -538,48 +477,61 @@
         </div>
     </section>
 
-    <!-- Enhanced Experience Section -->
     <section id="experiences" class="py-20 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="text-3xl font-bold mb-12 text-center">Expériences uniques</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Experience Card -->
                 <div class="bg-white rounded-xl overflow-hidden shadow-lg group hover:shadow-xl transition-shadow">
                     <div class="relative h-64">
-                        <img src="../../../assets/images/3.jpg" alt="Experience"
-                            class="w-full h-full object-cover loading=" lazy">
+                        <a href="/reservation">
+                            <img src="../../../assets/images/paris3.jpg" alt="Experience"
+                                class="w-full h-full object-cover loading=" lazy">
+                        </a>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Visite guidée de Paris</h3>
-                        <p class="text-gray-600 mb-4">Découvrez les secrets de la ville lumière.</p>
+                        <p class="text-gray-600 mb-4">Plongez au cœur des merveilles cachées de la Ville Lumière.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold">50€</span>
                             <button
                                 class="bg-[#FF385C] text-white px-6 py-2 rounded-full hover:bg-[#FF385C] transition-colors"
-                                aria-label="Book Paris guided tour">Réserver</button>
+                                aria-label="Book Paris guided tour">
+                                <a href="/reservation">
+                                    Réserver
+                                </a>
+                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="bg-white rounded-xl overflow-hidden shadow-lg group hover:shadow-xl transition-shadow">
                     <div class="relative h-64">
-                        <img src="../../../assets/images/3.jpg" alt="Experience"
-                            class="w-full h-full object-cover loading=" lazy">
+                        <a href="/reservation">
+                            <img src="../../../assets/images/13.jpg" alt="Experience"
+                                class="w-full h-full object-cover loading=" lazy">
+                        </a>
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Dégustation de vin à Bordeaux</h3>
-                        <p class="text-gray-600 mb-4">Explorez les meilleurs vignobles de la région.</p>
+                        <h3 class="text-xl font-bold mb-2">Dégustation de jus naturels à Bordeaux</h3>
+                        <p class="text-gray-600 mb-4">Savourez des saveurs de fruits frais issus des meilleures fermes
+                            locales.</p>
                         <div class="flex justify-between items-center">
                             <span class="text-2xl font-bold">75€</span>
                             <button
                                 class="bg-[#FF385C] text-white px-6 py-2 rounded-full hover:bg-[#FF385C] transition-colors"
-                                aria-label="Book Bordeaux wine tasting">Réserver</button>
+                                aria-label="Book Bordeaux wine tasting">
+                                <a href="/reservation">
+                                    Réserver
+                                </a>
+                            </button>
                         </div>
                     </div>
                 </div>
                 <div class="bg-white rounded-xl overflow-hidden shadow-lg group hover:shadow-xl transition-shadow">
                     <div class="relative h-64">
-                        <img src="../../../assets/images/3.jpg" alt="Experience"
-                            class="w-full h-full object-cover loading=" lazy">
+                        <a href="/reservation">
+                            <img src="../../../assets/images/12.jpg" alt="Experience"
+                                class="w-full h-full object-cover loading=" lazy">
+                        </a>
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold mb-2">Cours de cuisine provençale</h3>
@@ -588,17 +540,14 @@
                             <span class="text-2xl font-bold">60€</span>
                             <button
                                 class="bg-[#FF385C] text-white px-6 py-2 rounded-full hover:bg-[#FF385C] transition-colors"
-                                aria-label="Book Provençal cooking class">Réserver</button>
+                                aria-label="Book Provençal cooking class"><a href="/reservation">Réserver</a></button>
                         </div>
                     </div>
                 </div>
-                <!-- More experience cards... -->
             </div>
         </div>
     </section>
 
-
-    <!-- Enhanced Services Section -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="text-3xl font-bold mb-12 text-center">Nos Services Premium</h2>
@@ -628,17 +577,15 @@
         </div>
     </section>
 
-    <!-- Enhanced Reviews Section -->
     <section class="py-20 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="text-3xl font-bold mb-12 text-center">Ce que disent nos clients</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Review Card -->
                 <div class="bg-white p-8 rounded-xl shadow-lg">
                     <div class="flex items-center mb-6">
-                        <img src="/api/placeholder/50/50" alt="Client" class="w-14 h-14 rounded-full mr-4">
+                        <img src="../../../assets/images/15.jpg" alt="Client" class="w-14 h-14 rounded-full mr-4">
                         <div>
-                            <h4 class="font-bold">Sophie Martin</h4>
+                            <h4 class="font-bold">Mohammed ENNAIM</h4>
                             <div class="flex text-yellow-400">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -650,32 +597,13 @@
                     </div>
                     <p class="text-gray-600 mb-4">"Une expérience inoubliable ! La villa était exactement comme sur les
                         photos, et le service était impeccable."</p>
-                    <p class="text-gray-500 text-sm">Séjour à Nice - Août 2024</p>
-                </div>
-                <!-- More review cards... -->
-                <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-6">
-                        <img src="/api/placeholder/50/50" alt="Client" class="w-14 h-14 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-bold">Sophie Martin</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600 mb-4">"Une expérience inoubliable ! La villa était exactement comme sur les
-                        photos, et le service était impeccable."</p>
-                    <p class="text-gray-500 text-sm">Séjour à Nice - Août 2024</p>
+                    <p class="text-gray-500 text-sm">Séjour à Marrakech - Août 2024</p>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-lg">
                     <div class="flex items-center mb-6">
-                        <img src="/api/placeholder/50/50" alt="Client" class="w-14 h-14 rounded-full mr-4">
+                        <img src="../../../assets/images/17.jpg" alt="Client" class="w-14 h-14 rounded-full mr-4">
                         <div>
-                            <h4 class="font-bold">Sophie Martin</h4>
+                            <h4 class="font-bold">Mohamed EDDAHMANI</h4>
                             <div class="flex text-yellow-400">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -687,7 +615,25 @@
                     </div>
                     <p class="text-gray-600 mb-4">"Une expérience inoubliable ! La villa était exactement comme sur les
                         photos, et le service était impeccable."</p>
-                    <p class="text-gray-500 text-sm">Séjour à Nice - Août 2024</p>
+                    <p class="text-gray-500 text-sm">Séjour à Rabat - Août 2024</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <img src="../../../assets/images/16.jpg" alt="Client" class="w-14 h-14 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Abderazak youcode</h4>
+                            <div class="flex text-yellow-400">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Une expérience inoubliable ! La villa était exactement comme sur les
+                        photos, et le service était impeccable."</p>
+                    <p class="text-gray-500 text-sm">Séjour à Casablanca - Août 2024</p>
                 </div>
             </div>
             <div class="text-center mt-12">
@@ -698,7 +644,6 @@
         </div>
     </section>
 
-    <!-- Enhanced Mobile App Section -->
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center gap-12">
@@ -726,14 +671,15 @@
                     </div>
                 </div>
                 <div class="flex-2">
-                    <img src="../../../assets/images/3.jpg" alt="Mobile App"
-                        class="w-full max-w-md mx-auto rounded-2xl shadow-2xl">
+                    <a href="/">
+                        <img src="../../../assets/images/14.jpg" alt="Mobile App"
+                            class="w-full max-w-md mx-auto rounded-2xl shadow-2xl">
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-white border-t">
         <div class="max-w-7xl mx-auto px-4 py-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -785,23 +731,24 @@
             </div>
         </div>
     </footer>
-    <!-- Modals and Scripts remain the same but enhanced -->
-
     <script>
-        // Enhanced initialization code for Flatpickr
-        flatpickr("#arrivalDate", {
-            mode: "single",
-            dateFormat: "Y-m-d",
-            minDate: "today",
-            showMonths: 2,
-            onChange: function (selectedDates) {
-                // Update minimum date for departure based on arrival
-                const departurePickr = document.querySelector("#departureDate")._flatpickr;
-                departurePickr.set("minDate", selectedDates[0]);
-            }
+        document.addEventListener('DOMContentLoaded', function () {
+            const arrivalPicker = flatpickr("#arrivalDate", {
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                showMonths: 1,
+                onChange: function (selectedDates) {
+                    departurePicker.set("minDate", selectedDates[0]);
+                }
+            });
+
+            const departurePicker = flatpickr("#departureDate", {
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                showMonths: 1
+            });
         });
 
-        // Enhanced User Menu Toggle with animation
         const userMenu = document.getElementById('userMenu');
         const userMenuBtn = document.getElementById('userMenuBtn');
 
@@ -816,90 +763,94 @@
             userMenu.classList.toggle('hidden');
         });
 
-        // Enhanced Modal Functions
         function openLoginModal() {
             const modal = document.getElementById('loginModal');
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
 
-            // Add animation
-            const modalContent = modal.querySelector('.bg-white');
-            modalContent.classList.add('animate-fade-in');
+                const modalContent = modal.querySelector('.bg-white');
+                if (modalContent) {
+                    modalContent.classList.add('animate-fade-in');
+                }
+            }
         }
 
         function closeLoginModal() {
             const modal = document.getElementById('loginModal');
-            document.body.style.overflow = 'auto';
-            modal.classList.add('hidden');
+            if (modal) {
+                document.body.style.overflow = 'auto';
+                modal.classList.add('hidden');
+            }
         }
 
-        // Enhanced Property Modal Functions with Swiper
         function openPropertyModal() {
             const modal = document.getElementById('propertyModal');
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+            if (modal) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
 
-            // Initialize Swiper with enhanced options
-            new Swiper('.propertySwiper', {
-                direction: 'horizontal',
-                loop: true,
-                effect: 'fade',
-                fadeEffect: {
-                    crossFade: true
-                },
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-            });
+                const swiperElement = document.querySelector('.propertySwiper');
+                if (swiperElement) {
+                    new Swiper('.propertySwiper', {
+                        direction: 'horizontal',
+                        loop: true,
+                        effect: 'fade',
+                        fadeEffect: {
+                            crossFade: true
+                        },
+                        autoplay: {
+                            delay: 5000,
+                            disableOnInteraction: false,
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                    });
+                }
+            }
         }
 
         function closePropertyModal() {
             const modal = document.getElementById('propertyModal');
-            document.body.style.overflow = 'auto';
-            modal.classList.add('hidden');
-        }
-
-        // Enhanced Favorite Toggle with Animation
-        function toggleFavorite(button) {
-            const icon = button.querySelector('i');
-            icon.classList.toggle('far');
-            icon.classList.toggle('fas');
-
-            // Add heart animation
-            button.classList.add('scale-125');
-            setTimeout(() => {
-                button.classList.remove('scale-125');
-            }, 200);
-
-            if (icon.classList.contains('fas')) {
-                icon.classList.add('text-red-500');
-                // Show success message
-                showNotification('Ajouté aux favoris !');
-            } else {
-                icon.classList.remove('text-red-500');
-                // Show removal message
-                showNotification('Retiré des favoris');
+            if (modal) {
+                document.body.style.overflow = 'auto';
+                modal.classList.add('hidden');
             }
         }
 
-        // Notification System
+        function toggleFavorite(button) {
+            const icon = button.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('far');
+                icon.classList.toggle('fas');
+
+                button.classList.add('scale-125');
+                setTimeout(() => {
+                    button.classList.remove('scale-125');
+                }, 200);
+
+                if (icon.classList.contains('fas')) {
+                    icon.classList.add('text-red-500');
+                    showNotification('Ajouté aux favoris !');
+                } else {
+                    icon.classList.remove('text-red-500');
+                    showNotification('Retiré des favoris');
+                }
+            }
+        }
+
         function showNotification(message) {
             const notification = document.createElement('div');
-            notification.className = 'fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-0 opacity-100 transition-all duration-300';
+            notification.className = 'fixed bottom-4 right-4 bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-0 opacity-100 transition-all duration-300 z-50';
             notification.textContent = message;
-
             document.body.appendChild(notification);
 
-            // Animate out after 3 seconds
             setTimeout(() => {
                 notification.classList.add('translate-y-full', 'opacity-0');
                 setTimeout(() => {
@@ -908,7 +859,6 @@
             }, 3000);
         }
 
-        // Smooth Scroll for Navigation Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -925,7 +875,6 @@
             });
         });
 
-        // Intersection Observer for Animations
         const animateOnScroll = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -936,41 +885,38 @@
             threshold: 0.1
         });
 
-        // Add animation to sections
         document.querySelectorAll('section').forEach(section => {
             animateOnScroll.observe(section);
         });
 
-        // Enhanced Search Functionality
-        const searchInput = document.querySelector('input[placeholder="Où allez-vous ?"]');
-        let searchTimeout;
-
-        searchInput.addEventListener('input', function () {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(() => {
-                // Simulate search API call
-                console.log('Searching for:', this.value);
-                // Here you would typically make an API call for search suggestions
-            }, 300);
-        });
-
-        // Initialize all tooltips
-        const tooltipElements = document.querySelectorAll('[data-tooltip]');
-        tooltipElements.forEach(element => {
-            element.addEventListener('mouseenter', (e) => {
-                const tooltip = document.createElement('div');
-                tooltip.className = 'absolute bg-gray-900 text-white px-4 py-2 rounded text-sm z-50 transform -translate-y-full -translate-x-1/2 left-1/2 -top-2';
-                tooltip.textContent = element.dataset.tooltip;
-                element.appendChild(tooltip);
+        const searchInput = document.querySelector('input[type="text"][name="destination"]');
+        if (searchInput) {
+            let searchTimeout;
+            searchInput.addEventListener('input', function () {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    console.log('Recherche en cours pour:', this.value);
+                }, 300);
             });
+        }
 
-            element.addEventListener('mouseleave', () => {
-                const tooltip = element.querySelector('.absolute');
-                if (tooltip) tooltip.remove();
+        function initializeTooltips() {
+            const tooltipElements = document.querySelectorAll('[data-tooltip]');
+            tooltipElements.forEach(element => {
+                element.addEventListener('mouseenter', (e) => {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'absolute bg-gray-900 text-white px-4 py-2 rounded text-sm z-50 transform -translate-y-full -translate-x-1/2 left-1/2 -top-2';
+                    tooltip.textContent = element.dataset.tooltip;
+                    element.appendChild(tooltip);
+                });
+
+                element.addEventListener('mouseleave', () => {
+                    const tooltip = element.querySelector('.absolute');
+                    if (tooltip) tooltip.remove();
+                });
             });
-        });
+        }
 
-        // Responsive Navigation
         const mobileMenuBtn = document.querySelector('#mobileMenuBtn');
         const mobileMenu = document.querySelector('#mobileMenu');
 
@@ -980,30 +926,9 @@
             });
         }
 
-        // Initialize date range picker
-        function initializeDatePicker() {
-            const arrivalDate = document.getElementById('arrivalDate');
-            const departureDate = document.getElementById('departureDate');
-
-            if (arrivalDate && departureDate) {
-                const arrival = flatpickr(arrivalDate, {
-                    minDate: "today",
-                    onChange: function (selectedDates) {
-                        departure.set('minDate', selectedDates[0]);
-                    }
-                });
-
-                const departure = flatpickr(departureDate, {
-                    minDate: arrivalDate.value || "today"
-                });
-            }
-        }
-
-        // Initialize on page load
         document.addEventListener('DOMContentLoaded', function () {
-            initializeDatePicker();
+            initializeTooltips();
         });
-
     </script>
 </body>
 

@@ -1,95 +1,149 @@
+<?php
+// session_start();
+
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     // Récupération des données
+//     $property_id = isset($_POST['property_id']) ? htmlspecialchars($_POST['property_id']) : null;
+//     $category_id = isset($_POST['category_id']) ? htmlspecialchars($_POST['category_id']) : null;
+
+//     if ($property_id) {
+//         // Détails d'une propriété spécifique
+//         $title = htmlspecialchars($_POST['title']);
+//         $location = htmlspecialchars($_POST['location']);
+//         $price = htmlspecialchars($_POST['price']);
+//         $rating = htmlspecialchars($_POST['rating']);
+//         $bedrooms = htmlspecialchars($_POST['bedrooms']);
+//         $bathrooms = htmlspecialchars($_POST['bathrooms']);
+//         $image = htmlspecialchars($_POST['image']);
+//         $photos_count = htmlspecialchars($_POST['photos_count']);
+//         $has_virtual_tour = htmlspecialchars($_POST['has_virtual_tour']);
+//     } 
+//     elseif ($category_id) {
+//         // Détails d'une catégorie
+//         $category_name = htmlspecialchars($_POST['category_name']);
+//         $price_from = htmlspecialchars($_POST['price_from']);
+//         $image = htmlspecialchars($_POST['image']);
+//     }
+//     else {
+//         // Redirection si aucune donnée valide
+//         header("Location: /");
+//         exit();
+//     }
+// } else {
+//     // Redirection si accès direct
+//     header("Location: /");
+//     exit();
+// }
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxueux Appartement avec Vue Panoramique - MaisonLocation</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Airbnb - Luxueux Appartement avec Vue Panoramique</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/swiper/8.4.7/swiper-bundle.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/swiper/8.4.7/swiper-bundle.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" rel="stylesheet">
     <style>
-        .gallery-grid {
+        :root {
+            --primary-color: #FF385C;
+        }
+
+        .text-primary {
+            color: var(--primary-color);
+        }
+
+        .bg-primary {
+            background-color: var(--primary-color);
+        }
+
+        .hover\:bg-primary-dark:hover {
+            background-color: #E31C5F;
+        }
+
+        .border-primary {
+            border-color: var(--primary-color);
+        }
+
+        .image-gallery {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
-            grid-template-rows: 250px 250px;
-            gap: 8px;
+            gap: 16px;
+            height: 450px;
         }
 
-        .gallery-main {
-            grid-row: 1 / -1;
-        }
-
-        .sticky-sidebar {
-            position: sticky;
-            top: 2rem;
-        }
-
-        .amenity-icon {
-            transition: transform 0.2s;
-        }
-
-        .amenity-icon:hover {
-            transform: scale(1.1);
-        }
-
-        .review-progress {
-            transition: width 1s ease-in-out;
+        .image-gallery-main {
+            grid-row: span 2;
         }
 
         .image-gallery img {
-            transition: transform 0.3s ease-in-out;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
         }
 
         .image-gallery img:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
         }
 
-        .social-share-button {
+        .amenity-item {
             transition: all 0.3s ease;
         }
 
-        .social-share-button:hover {
-            transform: translateY(-2px);
+        .amenity-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .sticky-nav {
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.9);
+        .date-picker-custom {
+            background-color: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            width: 100%;
         }
 
-        .floating-booking-bar {
-            transform: translateY(100%);
-            transition: transform 0.3s ease-in-out;
+        .price-animation {
+            animation: priceUpdate 0.3s ease;
         }
 
-        .floating-booking-bar.visible {
-            transform: translateY(0);
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
+        @keyframes priceUpdate {
+            0% {
+                transform: scale(1);
             }
 
-            to {
-                opacity: 1;
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
             }
         }
 
-        .fade-in {
-            animation: fadeIn 0.5s ease-in;
+        .loading-spinner {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
 
-<body class="bg-gray-50">
-    <!-- Enhanced Navigation -->
-    <nav class="sticky-nav fixed w-full z-50 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 py-4">
+<body class="bg-gray-50 font-sans antialiased">
+    <!-- Header -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <a href="/" class="text-[#FF385C] text-2xl font-bold flex items-center space-x-2" aria-label="Homepage">
                     <svg class="mx-auto h-8 w-auto" viewBox="0 0 1991.3 2159.5" xmlns="http://www.w3.org/2000/svg">
@@ -102,29 +156,51 @@
                     </svg>
                     <span>Airbnb</span>
                 </a>
-                <!-- Enhanced Search Bar -->
-                <div class="hidden md:flex items-center space-x-4 bg-white rounded-full shadow px-4 py-2">
-                    <input type="text" placeholder="Rechercher" class="w-64 focus:outline-none">
-                    <button class="text-red-500 hover:text-red-600">
-                        <i class="fas fa-search"></i>
-                    </button>
+
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-gray-900">Home</a>
+                    <a href="#destinations" class="text-gray-600 hover:text-gray-900">Destinations</a>
+                    <a href="#experiences" class="text-gray-600 hover:text-gray-900">Expériences</a>
+                    <a href="#contact" class="text-gray-600 hover:text-gray-900">Contact</a>
+                    <a href="#about" class="text-gray-600 hover:text-gray-900">À propos</a>
                 </div>
 
-                <div class="flex items-center space-x-6">
-                    <button class="hover:bg-gray-100 px-4 py-2 rounded-full flex items-center space-x-2">
-                        <i class="fas fa-globe"></i>
-                        <span>FR</span>
+                <div class="flex items-center space-x-4">
+                    <button class="hidden md:block hover:bg-gray-100 px-4 py-2 rounded-full border border-gray-300"
+                        aria-label="Become a host">
+                        Devenir hôte
                     </button>
-                    <div class="relative group">
-                        <button
-                            class="flex items-center space-x-2 border rounded-full p-2 hover:shadow-md transition-shadow">
+                    <button class="hover:bg-gray-100 p-2 rounded-full" aria-label="Change language">
+                        <i class="fas fa-globe"></i>
+                    </button>
+                    <div class="relative">
+                        <button id="userMenuBtn"
+                            class="flex items-center space-x-2 border rounded-full p-2 hover:shadow-md"
+                            aria-label="Open user menu">
                             <i class="fas fa-bars"></i>
-                            <i class="fas fa-user-circle text-2xl"></i>
+                            <i class="fas fa-user-circle text-2xl text-gray-600"></i>
                         </button>
-                        <!-- Enhanced Dropdown -->
-                        <div
-                            class="hidden group-hover:block absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-lg border p-4">
-                            <!-- [Previous dropdown content] -->
+                        <div id="userMenu"
+                            class="hidden absolute right-0 mt-2 bg-white rounded-xl shadow-xl border p-4 w-64">
+                            <div class="space-y-3">
+                                <a href="#" class="block hover:bg-gray-100 px-4 py-2 rounded-lg font-medium">
+                                    <i class="fas fa-user-plus mr-2"></i> S'inscrire
+                                </a>
+                                <a href="#" class="block hover:bg-gray-100 px-4 py-2 rounded-lg"
+                                    onclick="openLoginModal()">
+                                    <i class="fas fa-sign-in-alt mr-2"></i> Se connecter
+                                </a>
+                                <hr>
+                                <a href="/myHistoriques" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
+                                    <i class="fas fa-home mr-2"></i> MyHistoriques
+                                </a>
+                                <a href="#" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
+                                    <i class="fas fa-heart mr-2"></i> Favoris
+                                </a>
+                                <a href="#" class="block hover:bg-gray-100 px-4 py-2 rounded-lg">
+                                    <i class="fas fa-question-circle mr-2"></i> Aide
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -132,684 +208,527 @@
         </div>
     </nav>
 
-    <main class="pt-20">
-        <!-- Enhanced Gallery Section -->
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="relative gallery-grid rounded-xl overflow-hidden cursor-pointer mb-8">
-                <div class="gallery-main relative group overflow-hidden">
-                    <img src="../../../assets/images/2.jpg" alt="Main view" class="w-full h-full object-cover">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <button
-                            class="bg-white text-gray-800 px-6 py-2 rounded-lg shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                            Voir toutes les photos
-                        </button>
-                    </div>
+    <!-- Main Content -->
+    <main class="container mx-auto py-8 px-4 max-w-7xl">
+        <div class="mb-6">
+            <br>
+            <br>
+            <br>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Luxueux Appartement avec Vue Panoramique</h1>
+            <div class="flex items-center text-gray-600 space-x-4">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-map-marker-alt text-primary"></i>
+                    <span>Paris, Le Marais, France</span>
                 </div>
-                <img src="../../../assets/images/2.jpg" alt="Second view" class="w-full h-full object-cover">
-                <img src="../../../assets/images/2.jpg" alt="Third view" class="w-full h-full object-cover">
-                <img src="../../../assets/images/2.jpg" alt="Fourth view" class="w-full h-full object-cover">
-                <img src="../../../assets/images/2.jpg" alt="Fifth view" class="w-full h-full object-cover">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-star text-primary"></i>
+                    <span>4.97 (286 avis)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Image Gallery -->
+        <div class="image-gallery mb-8" id="imageGallery">
+            <div class="image-gallery-main">
+                <img src="../../../assets/images/3.jpg" alt="Vue principale" class="cursor-pointer">
+            </div>
+            <div>
+                <img src="../../../assets/images/4.jpg" alt="Salon" class="cursor-pointer">
+            </div>
+            <div>
+                <img src="../../../assets/images/5.jpg" alt="Chambre" class="cursor-pointer">
+            </div>
+            <div>
+                <img src="../../../assets/images/8.jpg" alt="Salon" class="cursor-pointer">
+            </div>
+            <div>
+                <img src="../../../assets/images/9.jpg" alt="Chambre" class="cursor-pointer">
+            </div>
+        </div>
+
+        <!-- Property Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Left Column -->
+            <div class="lg:col-span-2">
+                <!-- Property Overview -->
+                <section class="mb-8">
+                    <h2 class="text-2xl font-bold mb-4">Appartement entier</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="bg-white p-4 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow">
+                            <i class="fas fa-users text-2xl mb-2 text-primary"></i>
+                            <p class="font-medium">6 voyageurs</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow">
+                            <i class="fas fa-bed text-2xl mb-2 text-primary"></i>
+                            <p class="font-medium">3 chambres</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow">
+                            <i class="fas fa-bath text-2xl mb-2 text-primary"></i>
+                            <p class="font-medium">2 salles de bain</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow">
+                            <i class="fas fa-expand text-2xl mb-2 text-primary"></i>
+                            <p class="font-medium">85m²</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Description -->
+                <section class="mb-8 border-t pt-6">
+                    <h2 class="text-2xl font-bold mb-4">Description</h2>
+                    <p class="text-gray-700 leading-relaxed">
+                        Magnifique appartement de 85m² situé au cœur de Paris, offrant une vue imprenable sur la ville.
+                        Récemment rénové avec des matériaux haut de gamme, cet espace lumineux combine élégance
+                        parisienne et confort moderne. Idéal pour les familles ou groupes d'amis cherchant une
+                        expérience parisienne authentique et luxueuse.
+                    </p>
+                </section>
+
+                <!-- Amenities -->
+                <section class="mb-8 border-t pt-6">
+                    <h2 class="text-2xl font-bold mb-4">Équipements</h2>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4" id="amenitiesGrid"></div>
+                </section>
+
+                <!-- Location -->
+                <section class="border-t pt-6">
+                    <h2 class="text-2xl font-bold mb-4">Autres Details :</h2>
+                    <div class="mb-4">
+                        <img src="../../../assets/images/6.jpg" alt="Carte" class="w-full h-96 object-cover rounded-xl">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4" id="attractionsGrid"></div>
+                </section>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <!-- Main Content -->
-                <div class="lg:col-span-2">
-                    <!-- Enhanced Header Section -->
-                    <div class="mb-8">
-                        <div class="flex justify-between items-start">
-                            <div>
-                                <h1 class="text-3xl font-bold mb-2">Luxueux Appartement avec Vue Panoramique</h1>
-                                <div class="flex items-center space-x-4 text-gray-600">
-                                    <span class="flex items-center">
-                                        <i class="fas fa-star text-yellow-400 mr-1"></i>
-                                        4.97
-                                    </span>
-                                    <span>·</span>
-                                    <a href="#reviews" class="hover:underline">286 avis</a>
-                                    <span>·</span>
-                                    <span class="flex items-center">
-                                        <i class="fas fa-award text-red-500 mr-1"></i>
-                                        Superhost
-                                    </span>
-                                    <span>·</span>
-                                    <span class="flex items-center">
-                                        <i class="fas fa-map-marker-alt mr-1"></i>
-                                        Paris, France
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="flex space-x-4">
-                                <button
-                                    class="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">
-                                    <i class="far fa-heart"></i>
-                                    <span>Sauvegarder</span>
-                                </button>
-                                <button
-                                    class="flex items-center space-x-2 px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">
-                                    <i class="fas fa-share"></i>
-                                    <span>Partager</span>
-                                </button>
-                            </div>
+            <!-- Booking Column -->
+            <div class="lg:sticky lg:top-8 h-fit">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <span class="text-2xl font-bold">450 DH</span>
+                            <span class="text-gray-600">/nuit</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 mr-1"></i>
+                            <span class="font-medium">4.9</span>
+                            <span class="text-gray-600 ml-1">(128 avis)</span>
                         </div>
                     </div>
 
-                    <!-- Enhanced Features Section -->
-                    <div class="grid grid-cols-2 gap-8 mb-12">
-                        <div class="flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                            <i class="fas fa-users text-2xl text-gray-600"></i>
+                    <form id="bookingForm" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <h3 class="font-medium">6 voyageurs</h3>
-                                <p class="text-gray-600">Idéal pour les familles</p>
+                                <label for="arrivalDate"
+                                    class="block text-sm font-medium text-gray-700 mb-1">Arrivée</label>
+                                <input type="text" id="arrivalDate" name="arrivalDate"
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#FF385C] focus:border-transparent"
+                                    required>
+                            </div>
+                            <div>
+                                <label for="departureDate"
+                                    class="block text-sm font-medium text-gray-700 mb-1">Départ</label>
+                                <input type="text" id="departureDate" name="departureDate"
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#FF385C] focus:border-transparent"
+                                    required>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                            <i class="fas fa-bed text-2xl text-gray-600"></i>
-                            <div>
-                                <h3 class="font-medium">3 chambres</h3>
-                                <p class="text-gray-600">Lits king size</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                            <i class="fas fa-bath text-2xl text-gray-600"></i>
-                            <div>
-                                <h3 class="font-medium">2 salles de bain</h3>
-                                <p class="text-gray-600">Récemment rénovées</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                            <i class="fas fa-ruler-combined text-2xl text-gray-600"></i>
-                            <div>
-                                <h3 class="font-medium">85 m²</h3>
-                                <p class="text-gray-600">Espace spacieux</p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Enhanced Host Section -->
-                    <div class="border-t border-b py-8 mb-12">
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-4">
-                                <div class="relative">
-                                    <img src="../../../assets/images/2.jpg" alt="Host" class="w-16 h-16 rounded-full">
-                                    <div
-                                        class="absolute -bottom-1 -right-1 bg-green-500 w-4 h-4 rounded-full border-2 border-white">
-                                    </div>
-                                </div>
-                                <div>
-                                    <h3 class="text-xl font-medium">Hébergé par Marie</h3>
-                                    <p class="text-gray-600">Superhost · 245 locations · Membre depuis 2019</p>
-                                </div>
-                            </div>
-                            <button
-                                class="px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors">
-                                Contacter l'hôte
-                            </button>
+                        <div>
+                            <label for="guests" class="block text-sm font-medium text-gray-700 mb-1">Voyageurs</label>
+                            <select id="guests" name="guests"
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#FF385C] focus:border-transparent">
+                                <option value="1">1 voyageur</option>
+                                <option value="2">2 voyageurs</option>
+                                <option value="3">3 voyageurs</option>
+                                <option value="4">4 voyageurs</option>
+                                <option value="5">5 voyageurs</option>
+                                <option value="6">6 voyageurs</option>
+                                <option value="7">7 voyageurs</option>
+                                <option value="8">8 voyageurs</option>
+                            </select>
                         </div>
-                        <div class="mt-6 grid grid-cols-2 gap-4">
-                            <div class="flex items-center space-x-2">
-                                <i class="fas fa-check-circle text-green-500"></i>
-                                <span>Identité vérifiée</span>
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <i class="fas fa-medal text-yellow-500"></i>
-                                <span>Superhost expérimenté</span>
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <i class="fas fa-clock text-blue-500"></i>
-                                <span>Taux de réponse: 100%</span>
-                            </div>
-                            <div class="flex items-center space-x-2">
-                                <i class="fas fa-bolt text-purple-500"></i>
-                                <span>Temps de réponse: &lt; 1h</span>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Enhanced Description Section -->
-                    <div class="mb-12">
-                        <h2 class="text-2xl font-bold mb-6">À propos de ce logement</h2>
-                        <div class="prose max-w-none text-gray-600">
-                            <p class="mb-4">
-                                Découvrez ce magnifique appartement de 85m² situé au cœur de Paris, offrant une vue
-                                imprenable sur la ville.
-                                Récemment rénové avec des matériaux haut de gamme, cet espace lumineux combine élégance
-                                parisienne et confort moderne.
-                            </p>
-                            <p class="mb-4">
-                                L'appartement dispose de trois chambres spacieuses, chacune avec sa propre atmosphère
-                                unique.
-                                La cuisine entièrement équipée vous permettra de préparer de délicieux repas tout en
-                                profitant de la vue sur les toits de Paris.
-                            </p>
-                            <div id="readMore" class="hidden">
-                                <p class="mb-4">
-                                    Le salon spacieux est baigné de lumière naturelle grâce à ses grandes fenêtres et
-                                    offre un espace parfait pour se détendre
-                                    après une journée de découverte de la ville. Les deux salles de bain modernes sont
-                                    équipées de douches à l'italienne et
-                                    de produits de toilette haut de gamme.
-                                </p>
-                                <p class="mb-4">
-                                    Situé dans un quartier historique, vous serez à quelques pas des meilleurs
-                                    restaurants, cafés et boutiques de Paris.
-                                    La station de métro la plus proche est à 3 minutes à pied, vous permettant
-                                    d'explorer facilement toute la ville.
-                                </p>
+                        <div class="border-t pt-4">
+                            <div class="space-y-2" id="priceDetails">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">450 DH x <span id="nightsCount">0</span> nuits</span>
+                                    <span id="subtotal">0 DH</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Frais de ménage</span>
+                                    <span>80 DH</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Frais de service</span>
+                                    <span id="serviceFee">0 DH</span>
+                                </div>
                             </div>
-                            <button onclick="toggleReadMore()" class="text-red-500 font-medium hover:underline">
-                                Afficher plus <i class="fas fa-chevron-down ml-1"></i>
-                            </button>
+                            <div class="border-t mt-4 pt-4 flex justify-between font-bold">
+                                <span>Total</span>
+                                <span id="totalPrice">0 DH</span>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Enhanced Amenities Section -->
-                    <div id="amenities" class="mb-12">
-                        <h2 class="text-2xl font-bold mb-6">Équipements</h2>
-                        <div class="grid grid-cols-2 gap-6">
-                            <div class="space-y-6">
-                                <div
-                                    class="flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                                    <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                                        <i class="fas fa-wifi text-xl text-gray-600"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-medium">Wifi Haut Débit</h3>
-                                        <p class="text-gray-600">500 Mbps</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                                    <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                                        <i class="fas fa-tv text-xl text-gray-600"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-medium">Smart TV 4K</h3>
-                                        <p class="text-gray-600">Netflix & Prime inclus</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                                    <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                                        <i class="fas fa-snowflake text-xl text-gray-600"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-medium">Climatisation</h3>
-                                        <p class="text-gray-600">Contrôle individuel</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="space-y-6">
-                                <div
-                                    class="flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                                    <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                                        <i class="fas fa-utensils text-xl text-gray-600"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-medium">Cuisine Équipée</h3>
-                                        <p class="text-gray-600">Tout le nécessaire</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                                    <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                                        <i class="fas fa-parking text-xl text-gray-600"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-medium">Parking Privé</h3>
-                                        <p class="text-gray-600">Sécurisé & Couvert</p>
-                                    </div>
-                                </div>
-                                <div
-                                    class="flex items-center space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors">
-                                    <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center">
-                                        <i class="fas fa-dumbbell text-xl text-gray-600"></i>
-                                    </div>
-                                    <div>
-                                        <h3 class="font-medium">Salle de Sport</h3>
-                                        <p class="text-gray-600">Accès gratuit</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button
-                            class="mt-8 px-6 py-3 border border-gray-900 rounded-lg hover:bg-gray-50 transition-colors">
-                            Voir tous les équipements (24)
+                        <button type="submit"
+                            class="w-full bg-[#FF385C] text-white py-3 rounded-lg font-medium hover:bg-[#FF385C]/90 transition-colors">
+                            Réserver
                         </button>
-                    </div>
-
-                    <!-- Enhanced Location Section -->
-                    <div id="location" class="mb-12">
-                        <h2 class="text-2xl font-bold mb-6">Emplacement</h2>
-                        <div class="relative h-96 rounded-xl overflow-hidden mb-6">
-                            <img src="../../../assets/images/2.jpg" alt="Map" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-black bg-opacity-10"></div>
-                            <button
-                                class="absolute bottom-4 right-4 bg-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                                Voir sur la carte
-                            </button>
-                        </div>
-                        <div class="grid grid-cols-2 gap-8">
-                            <div>
-                                <h3 class="font-medium mb-4">Quartier</h3>
-                                <p class="text-gray-600 mb-4">
-                                    Situé dans le quartier du Marais, l'un des plus charmants de Paris, vous serez
-                                    entouré
-                                    d'histoire et de culture. Les rues pavées regorgent de boutiques tendance, de
-                                    galeries d'art
-                                    et de cafés traditionnels.
-                                </p>
-                                <div class="space-y-2">
-                                    <div class="flex items-center space-x-2">
-                                        <i class="fas fa-walking text-gray-400"></i>
-                                        <span>5 min à pied du métro Saint-Paul</span>
-                                    </div>
-                                    <div class="flex items-center space-x-2">
-                                        <i class="fas fa-store text-gray-400"></i>
-                                        <span>Nombreux commerces à proximité</span>
-                                    </div>
-                                    <div class="flex items-center space-x-2">
-                                        <i class="fas fa-utensils text-gray-400"></i>
-                                        <span>Restaurants étoilés dans le quartier</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 class="font-medium mb-4">Points d'intérêt à proximité</h3>
-                                <ul class="space-y-4">
-                                    <li class="flex justify-between items-center">
-                                        <span>Place des Vosges</span>
-                                        <span class="text-gray-600">5 min à pied</span>
-                                    </li>
-                                    <li class="flex justify-between items-center">
-                                        <span>Musée Picasso</span>
-                                        <span class="text-gray-600">8 min à pied</span>
-                                    </li>
-                                    <li class="flex justify-between items-center">
-                                        <span>Notre-Dame</span>
-                                        <span class="text-gray-600">15 min à pied</span>
-                                    </li>
-                                    <li class="flex justify-between items-center">
-                                        <span>Centre Pompidou</span>
-                                        <span class="text-gray-600">12 min à pied</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Enhanced Reviews Section -->
-                    <div id="reviews" class="mb-12">
-                        <div class="flex items-center space-x-4 mb-8">
-                            <div class="flex items-center">
-                                <i class="fas fa-star text-yellow-400 text-2xl mr-2"></i>
-                                <span class="text-3xl font-bold">4.97</span>
-                            </div>
-                            <div class="text-gray-600">
-                                <span class="font-medium">286 avis</span>
-                                <span class="mx-2">·</span>
-                                <span>Superhost</span>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-2 gap-8 mb-8">
-                            <div class="space-y-4">
-                                <div class="flex items-center space-x-4">
-                                    <span class="w-24">Propreté</span>
-                                    <div class="flex-1 bg-gray-200 h-2 rounded-full">
-                                        <div class="bg-gray-900 h-2 rounded-full" style="width: 98%"></div>
-                                    </div>
-                                    <span class="w-8 text-right">4.9</span>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <span class="w-24">Précision</span>
-                                    <div class="flex-1 bg-gray-200 h-2 rounded-full">
-                                        <div class="bg-gray-900 h-2 rounded-full" style="width: 95%"></div>
-                                    </div>
-                                    <span class="w-8 text-right">4.8</span>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <span class="w-24">Communication</span>
-                                    <div class="flex-1 bg-gray-200 h-2 rounded-full">
-                                        <div class="bg-gray-900 h-2 rounded-full" style="width: 100%"></div>
-                                    </div>
-                                    <span class="w-8 text-right">5.0</span>
-                                </div>
-                            </div>
-                            <div class="space-y-4">
-                                <div class="flex items-center space-x-4">
-                                    <span class="w-24">Arrivée</span>
-                                    <div class="flex-1 bg-gray-200 h-2 rounded-full">
-                                        <div class="bg-gray-900 h-2 rounded-full" style="width: 97%"></div>
-                                    </div>
-                                    <span class="w-8 text-right">4.9</span>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <span class="w-24">Qualité-prix</span>
-                                    <div class="flex-1 bg-gray-200 h-2 rounded-full">
-                                        <div class="bg-gray-900 h-2 rounded-full" style="width: 93%"></div>
-                                    </div>
-                                    <span class="w-8 text-right">4.7</span>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <span class="w-24">Emplacement</span>
-                                    <div class="flex-1 bg-gray-200 h-2 rounded-full">
-                                        <div class="bg-gray-900 h-2 rounded-full" style="width: 98%"></div>
-                                    </div>
-                                    <span class="w-8 text-right">4.9</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Individual Reviews -->
-                        <div class="grid grid-cols-2 gap-8">
-                            <div class="space-y-6">
-                                <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                                    <div class="flex items-center space-x-4 mb-4">
-                                        <img src="../../../assets/images/2.jpg" alt="Sophie"
-                                            class="w-12 h-12 rounded-full">
-                                        <div>
-                                            <h4 class="font-medium">Sophie</h4>
-                                            <p class="text-gray-600 text-sm">Mars 2024</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-600">
-                                        Un séjour parfait ! L'appartement est magnifique, très bien équipé et idéalement
-                                        situé.
-                                        Marie est une hôte exceptionnelle, très attentionnée et réactive. Je recommande
-                                        vivement !
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="space-y-6">
-                                <div class="p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                                    <div class="flex items-center space-x-4 mb-4">
-                                        <img src="../../../assets/images/2.jpg" alt="Thomas"
-                                            class="w-12 h-12 rounded-full">
-                                        <div>
-                                            <h4 class="font-medium">Thomas</h4>
-                                            <p class="text-gray-600 text-sm">Février 2024</p>
-                                        </div>
-                                    </div>
-                                    <p class="text-gray-600">
-                                        Superbe appartement avec une vue incroyable sur Paris. La décoration est soignée
-                                        et l'emplacement est parfait pour découvrir la ville. Marie nous a donné
-                                        d'excellents
-                                        conseils pour les restaurants du quartier.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <button
-                            class="mt-8 w-full py-4 border border-gray-900 rounded-lg hover:bg-gray-50 transition-colors">
-                            Afficher les 286 commentaires
-                        </button>
-                    </div>
-
-                    <!-- Règles de la maison -->
-                    <div class="mb-12">
-                        <h2 class="text-2xl font-bold mb-6">Règles de la maison</h2>
-                        <div class="grid grid-cols-2 gap-6">
-                            <div class="space-y-4">
-                                <div class="flex items-center space-x-4">
-                                    <i class="fas fa-clock text-gray-400"></i>
-                                    <div>
-                                        <h3 class="font-medium">Arrivée : 15:00 - 22:00</h3>
-                                        <p class="text-gray-600">Départ : 11:00</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <i class="fas fa-smoking-ban text-gray-400"></i>
-                                    <span>Non-fumeur</span>
-                                </div>
-                            </div>
-                            <div class="space-y-4">
-                                <div class="flex items-center space-x-4">
-                                    <i class="fas fa-paw text-gray-400"></i>
-                                    <span>Pas d'animaux</span>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <i class="fas fa-music text-gray-400"></i>
-                                    <span>Pas de fête ni de soirée</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
 
-                <!-- Enhanced Booking Sidebar -->
-                <div class="lg:col-span-1">
-                    <div class="sticky-sidebar">
-                        <div class="bg-white p-6 rounded-xl shadow-lg border">
-                            <div class="flex justify-between items-start mb-6">
-                                <div>
-                                    <span class="text-2xl font-bold">189 €</span>
-                                    <span class="text-gray-600"> par nuit</span>
-                                </div>
-                                <div class="flex items-center">
-                                    <i class="fas fa-star text-yellow-400 mr-1"></i>
-                                    <span class="font-medium">4.97</span>
-                                    <span class="mx-1 text-gray-600">·</span>
-                                    <a href="#reviews" class="text-gray-600 hover:underline">286 avis</a>
-                                </div>
-                            </div>
-
-                            <!-- Enhanced Booking Form -->
-                            <form class="space-y-4">
-                                <div class="border rounded-xl overflow-hidden">
-                                    <div class="grid grid-cols-2 divide-x">
-                                        <div class="p-3">
-                                            <label class="block text-xs font-medium">ARRIVÉE</label>
-                                            <input type="text" id="check-in" class="w-full focus:outline-none"
-                                                placeholder="Ajouter une date">
-                                        </div>
-                                        <div class="p-3">
-                                            <label class="block text-xs font-medium">DÉPART</label>
-                                            <input type="text" id="check-out" class="w-full focus:outline-none"
-                                                placeholder="Ajouter une date">
-                                        </div>
-                                    </div>
-                                    <div class="border-t p-3">
-                                        <label class="block text-xs font-medium">VOYAGEURS</label>
-                                        <select class="w-full focus:outline-none">
-                                            <option>1 voyageur</option>
-                                            <option>2 voyageurs</option>
-                                            <option>3 voyageurs</option>
-                                            <option>4 voyageurs</option>
-                                            <option>5 voyageurs</option>
-                                            <option>6 voyageurs</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <button
-                                    class="w-full bg-gradient-to-r from-red-500 to-red-600 text-white py-4 rounded-lg hover:from-red-600 hover:to-red-700 transition-colors">
-                                    <a href="/checkout" class="mt-4">
-                                        Réserver
-                                    </a>
-                                </button>
-
-                                <p class="text-center text-gray-600 text-sm">
-                                    Aucun montant ne sera débité pour le moment
-                                </p>
-
-                                <!-- Prix détaillé -->
-                                <div class="space-y-3 pt-4">
-                                    <div class="flex justify-between">
-                                        <span class="underline">189 € x 7 nuits</span>
-                                        <span>1 323 €</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="underline">Frais de ménage</span>
-                                        <span>75 €</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="underline">Frais de service</span>
-                                        <span>198 €</span>
-                                    </div>
-                                    <div class="pt-4 border-t flex justify-between font-bold">
-                                        <span>Total</span>
-                                        <span>1 596 €</span>
-                                    </div>
-                                </div>
-                            </form>
+                <div class="mt-6 bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex items-center space-x-4">
+                        <img src="/api/placeholder/60/60" alt="Host" class="w-16 h-16 rounded-full">
+                        <div>
+                            <h3 class="font-bold">Pierre Dubois</h3>
+                            <p class="text-gray-600">Hôte depuis 2019</p>
                         </div>
-
-                        <!-- Signaler l'annonce -->
-                        <button class="mt-4 w-full text-center text-gray-600 hover:underline">
-                            <i class="fas fa-flag mr-2"></i>
-                            Signaler cette annonce
-                        </button>
+                    </div>
+                    <div class="mt-4 space-y-2">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-star text-[#FF385C]"></i>
+                            <span>4.9 sur 5 (128 avis)</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-medal text-[#FF385C]"></i>
+                            <span>Superhôte</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-clock text-[#FF385C]"></i>
+                            <span>Taux de réponse : 100%</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- Enhanced Sticky Booking Bar (Mobile) -->
-    <div class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg p-4 floating-booking-bar">
-        <div class="flex justify-between items-center">
-            <div>
-                <span class="text-xl font-bold">189 €</span>
-                <span class="text-gray-600"> par nuit</span>
+    <!-- Confirmation Modal -->
+    <!-- <div id="confirmationModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white rounded-xl p-6 max-w-md w-full">
+            <div class="text-center">
+                <i class="fas fa-check-circle text-6xl text-primary mb-4"></i>
+                <h3 class="text-2xl font-bold mb-4">Réservation confirmée !</h3>
+                <div class="bg-gray-100 p-4 rounded-xl mb-4">
+                    <div class="flex items-center space-x-4">
+                        <img src="../../../assets/images/3.jpg" alt="Appartement" class="w-24 h-24 object-cover rounded-lg">
+                        <div class="text-left">
+                            <h4 class="font-bold">Luxueux Appartement</h4>
+                            <p class="text-gray-600" id="modalBookingDetails"></p>
+                            <p class="text-primary font-bold mt-2" id="modalTotalPrice"></p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button id="closeModalBtn" class="w-full border border-[#FF385C] text-[#FF385C] py-3 rounded-md transition-colors">
+                        Fermer
+                    </button>
+                    <button class="w-full bg-primary text-white py-3 rounded-md hover:bg-primary-dark transition-colors">
+                        <a href="/checkout">
+                            continue payment
+                        </a>
+                    </button>
+                </div>
+                
             </div>
-            <button class="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-colors">
-                Réserver
-            </button>
+        </div>
+    </div> -->
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-full p-4">
+            <div class="loading-spinner w-12 h-12 border-4 border-primary border-t-transparent rounded-full"></div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t">
-        <div class="max-w-7xl mx-auto px-4 py-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div>
-                    <h4 class="font-medium mb-4">Assistance</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="#" class="hover:underline">Centre d'aide</a></li>
-                        <li><a href="#" class="hover:underline">Informations de sécurité</a></li>
-                        <li><a href="#" class="hover:underline">Options d'annulation</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-medium mb-4">Communauté</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="#" class="hover:underline">Airbnb.org</a></li>
-                        <li><a href="#" class="hover:underline">Lutte contre la discrimination</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-medium mb-4">Accueil</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="#" class="hover:underline">Héberger des voyageurs</a></li>
-                        <li><a href="#" class="hover:underline">Forum de la communauté</a></li>
-                        <li><a href="#" class="hover:underline">Hébergement responsable</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-medium mb-4">À propos</h4>
-                    <ul class="space-y-2 text-gray-600">
-                        <li><a href="#" class="hover:underline">Newsroom</a></li>
-                        <li><a href="#" class="hover:underline">Nouvelles fonctionnalités</a></li>
-                        <li><a href="#" class="hover:underline">Carrières</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t mt-8 pt-8 flex justify-between items-center">
-                <div class="text-gray-600">
-                    © 2025 Airbnb, Inc. · Confidentialité · Conditions générales
-                </div>
-                <div class="flex items-center space-x-6">
-                    <div class="flex items-center">
-                        <i class="fas fa-globe mr-2"></i>
-                        <span>Français (FR)</span>
-                    </div>
-                    <div>
-                        <span>EUR</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-        // Initialize Flatpickr
-        flatpickr("#check-in", {
+        // Enhanced price calculation
+        const NIGHTLY_RATE = 189;
+        const CLEANING_FEE = 50;
+        const SERVICE_FEE_PERCENTAGE = 0.12;
+
+        // Datepicker initialization with enhanced configuration
+        const datePickerConfig = {
+            dateFormat: "Y-m-d",
             minDate: "today",
-            dateFormat: "d/m/Y",
-            onChange: function (selectedDates) {
-                checkOut.set("minDate", selectedDates[0]);
-            }
-        });
-
-        const checkOut = flatpickr("#check-out", {
-            dateFormat: "d/m/Y",
-        });
-
-        // Sticky Navigation
-        window.addEventListener('scroll', function () {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('shadow-md');
-            } else {
-                nav.classList.remove('shadow-md');
-            }
-        });
-
-        // Toggle Read More
-        function toggleReadMore() {
-            const readMore = document.getElementById('readMore');
-            const button = readMore.nextElementSibling;
-
-            if (readMore.classList.contains('hidden')) {
-                readMore.classList.remove('hidden');
-                button.innerHTML = 'Afficher moins <i class="fas fa-chevron-up ml-1"></i>';
-            } else {
-                readMore.classList.add('hidden');
-                button.innerHTML = 'Afficher plus <i class="fas fa-chevron-down ml-1"></i>';
-            }
-        }
-
-        // Mobile Booking Bar
-        const showBookingBar = () => {
-            const bar = document.querySelector('.floating-booking-bar');
-            if (window.scrollY > 700) {
-                bar.classList.add('visible');
-            } else {
-                bar.classList.remove('visible');
+            locale: {
+                firstDayOfWeek: 1,
+                weekdays: {
+                    shorthand: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+                    longhand: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
+                },
+                months: {
+                    shorthand: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc"],
+                    longhand: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"]
+                }
+            },
+            onChange: function (selectedDates, dateStr, instance) {
+                if (instance.element.id === 'arrivalDate') {
+                    departureDatePicker.set('minDate', dateStr);
+                }
+                updatePriceBreakdown();
+                validateForm();
             }
         };
 
-        window.addEventListener('scroll', showBookingBar);
+        const arrivalDatePicker = flatpickr("#arrivalDate", datePickerConfig);
+        const departureDatePicker = flatpickr("#departureDate", datePickerConfig);
 
-        // Initialize Swiper for gallery
-        new Swiper('.mainSwiper', {
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
+        // Guest select population with animation
+        const guestSelect = document.getElementById('guestSelect');
+        for (let i = 1; i <= 6; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = `${i} Voyageur${i > 1 ? 's' : ''}`;
+            guestSelect.appendChild(option);
+        }
+
+        // Price calculation functions
+        function calculateNights(arrival, departure) {
+            if (!arrival || !departure) return 0;
+            const oneDay = 24 * 60 * 60 * 1000;
+            return Math.round((new Date(departure) - new Date(arrival)) / oneDay);
+        }
+
+        function calculateTotalPrice(nights) {
+            const subtotal = nights * NIGHTLY_RATE;
+            const serviceFee = Math.round(subtotal * SERVICE_FEE_PERCENTAGE);
+            return {
+                subtotal,
+                serviceFee,
+                total: subtotal + CLEANING_FEE + serviceFee
+            };
+        }
+
+        function updatePriceBreakdown() {
+            const arrival = document.getElementById('arrivalDate').value;
+            const departure = document.getElementById('departureDate').value;
+            const nights = calculateNights(arrival, departure);
+
+            if (nights > 0) {
+                const { subtotal, serviceFee, total } = calculateTotalPrice(nights);
+
+                document.getElementById('nightCount').textContent = nights;
+                document.getElementById('subtotal').textContent = `${subtotal}€`;
+                document.getElementById('serviceFee').textContent = `${serviceFee}€`;
+                document.getElementById('totalPrice').textContent = `${total}€`;
+
+                document.getElementById('priceBreakdown').classList.remove('hidden');
+                document.getElementById('totalPrice').classList.add('price-animation');
+                setTimeout(() => {
+                    document.getElementById('totalPrice').classList.remove('price-animation');
+                }, 300);
+            } else {
+                document.getElementById('priceBreakdown').classList.add('hidden');
+            }
+        }
+
+        // Form validation with visual feedback
+        function validateForm() {
+            const arrivalDate = document.getElementById('arrivalDate').value;
+            const departureDate = document.getElementById('departureDate').value;
+            const guestCount = document.getElementById('guestSelect').value;
+            const bookButton = document.getElementById('bookButton');
+
+            if (arrivalDate && departureDate && guestCount) {
+                bookButton.disabled = false;
+                bookButton.classList.remove('opacity-50');
+                return true;
+            } else {
+                bookButton.disabled = true;
+                bookButton.classList.add('opacity-50');
+                return false;
+            }
+        }
+
+        // Amenities with enhanced interaction
+        const amenities = [
+            {
+                name: 'Wifi',
+                description: 'Connexion internet haut débit',
+                icon: 'fas fa-wifi'
             },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
+            {
+                name: 'Cuisine équipée',
+                description: 'Pour préparer vos repas',
+                icon: 'fas fa-utensils'
             },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+            {
+                name: 'Télévision',
+                description: 'Avec chaînes internationales',
+                icon: 'fas fa-tv'
             },
+            {
+                name: 'Climatisation',
+                description: 'Pour votre confort',
+                icon: 'fas fa-wind'
+            },
+            {
+                name: 'Lave-linge',
+                description: 'Machine à laver dans l\'appartement',
+                icon: 'fas fa-tshirt'
+            },
+            {
+                name: 'Fer à repasser',
+                description: 'Disponible sur demande',
+                icon: 'fas fa-archive'
+            }
+        ];
+
+        // Populate amenities with animation
+        const amenitiesGrid = document.getElementById('amenitiesGrid');
+        amenities.forEach((amenity, index) => {
+            const amenityItem = document.createElement('div');
+            amenityItem.classList.add(
+                'amenity-item',
+                'bg-white',
+                'p-4',
+                'rounded-xl',
+                'shadow-md',
+                'flex',
+                'items-center',
+                'space-x-4',
+                'opacity-0',
+                'transform',
+                'translate-y-4'
+            );
+
+            amenityItem.innerHTML = `
+                <div class="bg-pink-100 p-3 rounded-full">
+                    <i class="${amenity.icon} text-primary text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800">${amenity.name}</h3>
+                    <p class="text-gray-600 text-sm">${amenity.description}</p>
+                </div>
+            `;
+
+            amenitiesGrid.appendChild(amenityItem);
+
+            // Animate amenities appearance
+            setTimeout(() => {
+                amenityItem.classList.remove('opacity-0', 'translate-y-4');
+                amenityItem.classList.add('transition-all', 'duration-500');
+            }, index * 100);
         });
 
-        // Dynamic price calculation
-        function updatePrice() {
-            const basePrice = 189;
-            const nights = 7; // Calculate from selected dates
-            const cleaningFee = 75;
-            const serviceFee = Math.round(basePrice * nights * 0.15);
-            const total = (basePrice * nights) + cleaningFee + serviceFee;
+        // Attractions near the property
+        const attractions = [
+            {
+                name: 'Tour Eiffel',
+                distance: '5 km',
+                icon: 'fas fa-monument'
+            },
+            {
+                name: 'Musée du Louvre',
+                distance: '2 km',
+                icon: 'fas fa-university'
+            },
+            {
+                name: 'Notre-Dame',
+                distance: '3 km',
+                icon: 'fas fa-church'
+            },
+            {
+                name: 'Champs-Élysées',
+                distance: '4 km',
+                icon: 'fas fa-shopping-bag'
+            }
+        ];
 
-            // Update DOM elements
-            document.querySelector('[data-total]').textContent = `${total} €`;
-        }
+        // Populate attractions with hover effects
+        const attractionsGrid = document.getElementById('attractionsGrid');
+        attractions.forEach(attraction => {
+            const attractionItem = document.createElement('div');
+            attractionItem.classList.add(
+                'bg-white',
+                'p-4',
+                'rounded-xl',
+                'shadow-md',
+                'flex',
+                'items-center',
+                'space-x-4',
+                'hover:shadow-lg',
+                'transition-all',
+                'duration-300',
+                'transform',
+                'hover:-translate-y-1'
+            );
+
+            attractionItem.innerHTML = `
+                <div class="bg-pink-100 p-3 rounded-full">
+                    <i class="${attraction.icon} text-primary text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-800">${attraction.name}</h3>
+                    <p class="text-gray-600 text-sm">${attraction.distance}</p>
+                </div>
+            `;
+
+            attractionsGrid.appendChild(attractionItem);
+        });
+
+        // Enhanced booking form submission
+        const bookingForm = document.getElementById('bookingForm');
+        const confirmationModal = document.getElementById('confirmationModal');
+        const modalBookingDetails = document.getElementById('modalBookingDetails');
+        const modalTotalPrice = document.getElementById('modalTotalPrice');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const loadingOverlay = document.getElementById('loadingOverlay');
+
+        bookingForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            if (!validateForm()) return;
+
+            const arrivalDate = document.getElementById('arrivalDate').value;
+            const departureDate = document.getElementById('departureDate').value;
+            const guestCount = document.getElementById('guestSelect').value;
+            const totalPrice = document.getElementById('totalPrice').textContent;
+
+            loadingOverlay.classList.remove('hidden');
+
+            // Simulate API call
+            setTimeout(() => {
+                loadingOverlay.classList.add('hidden');
+
+                modalBookingDetails.textContent = `${arrivalDate} - ${departureDate} · ${guestCount} voyageur(s)`;
+                modalTotalPrice.textContent = `Total: ${totalPrice}`;
+
+                confirmationModal.classList.remove('hidden');
+                confirmationModal.querySelector('.bg-white').classList.add('animate-bounce');
+
+                setTimeout(() => {
+                    confirmationModal.querySelector('.bg-white').classList.remove('animate-bounce');
+                }, 1000);
+
+                bookingForm.reset();
+                document.getElementById('priceBreakdown').classList.add('hidden');
+                validateForm();
+            }, 1500);
+        });
+
+        // Modal handling
+        closeModalBtn.addEventListener('click', () => {
+            confirmationModal.classList.add('hidden');
+        });
+
+        confirmationModal.addEventListener('click', (event) => {
+            if (event.target === confirmationModal) {
+                confirmationModal.classList.add('hidden');
+            }
+        });
+
+        // Image gallery interaction
+        const imageGallery = document.getElementById('imageGallery');
+        imageGallery.querySelectorAll('img').forEach(img => {
+            img.addEventListener('click', function () {
+                this.classList.toggle('scale-105');
+                setTimeout(() => {
+                    this.classList.remove('scale-105');
+                }, 200);
+            });
+        });
     </script>
 </body>
 
